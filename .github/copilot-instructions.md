@@ -101,7 +101,7 @@ az account set --subscription "<SUBSCRIPTION_ID>"
 # Update infra/main.parameters.json: environmentName, location, administratorLogin, administratorPassword
 
 # 3. Deploy everything
-pwsh -File scripts/deploy.ps1 -ResourceGroupName "shift-monitor-rg" -Location "North Europe"
+pwsh -File scripts/deploy.ps1 -ResourceGroupName "shift-monitor-rg" -Location "northeurope"
 ```
 
 ---

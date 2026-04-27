@@ -1,0 +1,26 @@
+{
+  "name": "azure-monitor-demo",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/azure-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    }
+  },
+  "remoteUser": "vscode",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-azurefunctions",
+        "ms-dotnettools.csharp",
+        "ms-vscode.powershell",
+        "ms-azuretools.vscode-bicep"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "postStartCommand": "bash -lc \"echo Run: az login ';' az account set --subscription '<SUB_ID>' ';' pwsh -File scripts/deploy.ps1 -ResourceGroupName '<RG>' -Location 'North Europe'\""
+}

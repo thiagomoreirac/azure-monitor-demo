@@ -8,7 +8,7 @@ description: >-
 
 ## Purpose
 
-Help Shift Technology control and visualize Log Analytics costs at the **tenant**
+Help the customer control and visualize Log Analytics costs at the **tenant**
 and **table** level, using Azure resource tags and workspace-level controls.
 
 ## Procedure
@@ -66,7 +66,7 @@ resource in `infra/main.json`. Example for the custom claims table:
 {
   "type": "Microsoft.OperationalInsights/workspaces/tables",
   "apiVersion": "2022-10-01",
-  "name": "[concat(variables('logAnalyticsWorkspaceName'), '/ShiftClaimsLogs_CL')]",
+  "name": "[concat(variables('logAnalyticsWorkspaceName'), '/CustomerClaimsLogs_CL')]",
   "dependsOn": [
     "[resourceId('Microsoft.OperationalInsights/workspaces', variables('logAnalyticsWorkspaceName'))]"
   ],
@@ -77,12 +77,12 @@ resource in `infra/main.json`. Example for the custom claims table:
 }
 ```
 
-Recommended retention settings for Shift Technology:
+Recommended retention settings for the customer:
 
 | Table | Hot (days) | Archive (days) | Reason |
 |---|---|---|---|
-| `ShiftClaimsLogs_CL` | 90 | 365 | Regulatory |
-| `ShiftFraudEvents_CL` | 180 | 365 | Fraud investigation |
+| `CustomerClaimsLogs_CL` | 90 | 365 | Regulatory |
+| `CustomerFraudEvents_CL` | 180 | 365 | Fraud investigation |
 | `traces` | 30 | 90 | Debugging only |
 | `dependencies` | 30 | 90 | Debugging only |
 | `performanceCounters` | 14 | 30 | Short-lived infra data |

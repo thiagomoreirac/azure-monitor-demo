@@ -1,72 +1,72 @@
-# 🚀 Script para configurar GitHub y subir el repositorio
-# Ejecutar paso a paso para conectar con GitHub
+# 🚀 Script to configure GitHub and push the repository
+# Run step-by-step to connect with GitHub
 
-Write-Host "🎯 CONFIGURACIÓN DE GITHUB - Azure Monitor Demo" -ForegroundColor Cyan
+Write-Host "🎯 GITHUB CONFIGURATION - Azure Monitor Demo" -ForegroundColor Cyan
 Write-Host "=================================================" -ForegroundColor Cyan
 
-# Paso 1: Verificar configuración Git actual
-Write-Host "`n📋 Paso 1: Verificación de configuración Git" -ForegroundColor Yellow
+# Step 1: Verify current Git configuration
+Write-Host "`n📋 Step 1: Git configuration check" -ForegroundColor Yellow
 git config --list --global
 
-# Paso 2: Mostrar estado actual del repositorio
-Write-Host "`n📦 Paso 2: Estado actual del repositorio" -ForegroundColor Yellow
+# Step 2: Show current repository status
+Write-Host "`n📦 Step 2: Current repository status" -ForegroundColor Yellow
 git status
 git log --oneline -5
 
-# Paso 3: Instrucciones para crear repositorio en GitHub
-Write-Host "`n🌐 Paso 3: Crear repositorio en GitHub" -ForegroundColor Yellow
-Write-Host "Ve a: https://github.com/new" -ForegroundColor Green
-Write-Host "Configuración recomendada:" -ForegroundColor White
+# Step 3: Instructions to create repository on GitHub
+Write-Host "`n🌐 Step 3: Create repository on GitHub" -ForegroundColor Yellow
+Write-Host "Go to: https://github.com/new" -ForegroundColor Green
+Write-Host "Recommended settings:" -ForegroundColor White
 Write-Host "  - Repository name: azure-monitor-demo" -ForegroundColor Gray
 Write-Host "  - Description: Complete Azure Monitor and Application Insights demo environment for client presentations" -ForegroundColor Gray
 Write-Host "  - Public repository" -ForegroundColor Gray
-Write-Host "  - NO inicializar con README (ya tenemos uno)" -ForegroundColor Gray
-Write-Host "  - NO agregar .gitignore (ya tenemos uno)" -ForegroundColor Gray
-Write-Host "  - Selecciona MIT License si quieres" -ForegroundColor Gray
+Write-Host "  - DO NOT initialize with README (already included)" -ForegroundColor Gray
+Write-Host "  - DO NOT add .gitignore (already included)" -ForegroundColor Gray
+Write-Host "  - Select MIT License if desired" -ForegroundColor Gray
 
-# Pausa para que el usuario cree el repositorio
-Write-Host "`n⏸️  PAUSA: Crea el repositorio en GitHub y presiona Enter para continuar..." -ForegroundColor Red
+# Pause so the user can create the repository
+Write-Host "`n⏸️  PAUSE: Create the repository on GitHub and press Enter to continue..." -ForegroundColor Red
 Read-Host
 
-# Paso 4: Obtener URL del repositorio
-Write-Host "`n🔗 Paso 4: Configuración del remote" -ForegroundColor Yellow
-$githubUsername = Read-Host "Ingresa tu username de GitHub"
-$repoName = Read-Host "Ingresa el nombre del repositorio (default: azure-monitor-demo)"
+# Step 4: Get repository URL
+Write-Host "`n🔗 Step 4: Remote configuration" -ForegroundColor Yellow
+$githubUsername = Read-Host "Enter your GitHub username"
+$repoName = Read-Host "Enter repository name (default: azure-monitor-demo)"
 if ([string]::IsNullOrEmpty($repoName)) {
     $repoName = "azure-monitor-demo"
 }
 
 $repoUrl = "https://github.com/$githubUsername/$repoName.git"
-Write-Host "URL del repositorio: $repoUrl" -ForegroundColor Green
+Write-Host "Repository URL: $repoUrl" -ForegroundColor Green
 
-# Paso 5: Agregar remote y subir código
-Write-Host "`n🚀 Paso 5: Conectar y subir al repositorio" -ForegroundColor Yellow
+# Step 5: Add remote and push code
+Write-Host "`n🚀 Step 5: Connect and push to repository" -ForegroundColor Yellow
 try {
     git remote add origin $repoUrl
-    Write-Host "✅ Remote agregado exitosamente" -ForegroundColor Green
+    Write-Host "✅ Remote added successfully" -ForegroundColor Green
     
     git branch -M main
-    Write-Host "✅ Branch renombrado a 'main'" -ForegroundColor Green
+    Write-Host "✅ Branch renamed to 'main'" -ForegroundColor Green
     
-    Write-Host "🔄 Subiendo código a GitHub..." -ForegroundColor Yellow
+    Write-Host "🔄 Pushing code to GitHub..." -ForegroundColor Yellow
     git push -u origin main
-    Write-Host "✅ ¡Código subido exitosamente!" -ForegroundColor Green
+    Write-Host "✅ Code pushed successfully!" -ForegroundColor Green
     
-    # Abrir repositorio en navegador
-    Write-Host "`n🌐 Abriendo repositorio en navegador..." -ForegroundColor Yellow
+    # Open repository in browser
+    Write-Host "`n🌐 Opening repository in browser..." -ForegroundColor Yellow
     Start-Process $repoUrl.Replace('.git', '')
     
 } catch {
     Write-Host "❌ Error: $($_.Exception.Message)" -ForegroundColor Red
-    Write-Host "💡 Comandos manuales de respaldo:" -ForegroundColor Yellow
+    Write-Host "💡 Fallback manual commands:" -ForegroundColor Yellow
     Write-Host "git remote add origin $repoUrl" -ForegroundColor Gray
     Write-Host "git branch -M main" -ForegroundColor Gray
     Write-Host "git push -u origin main" -ForegroundColor Gray
 }
 
-Write-Host "`n🎉 ¡REPOSITORIO CONFIGURADO!" -ForegroundColor Green
-Write-Host "Tu proyecto está ahora en: $repoUrl" -ForegroundColor Green
-Write-Host "`n📊 URLs importantes:" -ForegroundColor Cyan
+Write-Host "`n🎉 REPOSITORY CONFIGURED!" -ForegroundColor Green
+Write-Host "Your project is now at: $repoUrl" -ForegroundColor Green
+Write-Host "`n📊 Important URLs:" -ForegroundColor Cyan
 Write-Host "- GitHub Repo: $($repoUrl.Replace('.git', ''))" -ForegroundColor White
 Write-Host "- Demo App: https://app-bwkinh757hlog.azurewebsites.net" -ForegroundColor White
 Write-Host "- Demo Guide: docs/DEMO-GUIDE.md" -ForegroundColor White

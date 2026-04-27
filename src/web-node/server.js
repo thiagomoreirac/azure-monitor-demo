@@ -58,50 +58,50 @@ app.get('/', (req, res) => {
         <div class="container">
             <div class="header">
                 <h1>🎯 Azure Monitor Demo Environment</h1>
-                <p>Aplicación funcionando con Node.js + Application Insights</p>
+                <p>Application running with Node.js + Application Insights</p>
             </div>
 
             <div class="status success">
-                <strong>✅ Estado:</strong> Aplicación funcionando y enviando telemetría a Application Insights
+                <strong>✅ Status:</strong> Application running and sending telemetry to Application Insights
             </div>
 
             <div class="endpoint">
-                <h3>📊 API Endpoints Disponibles</h3>
-                <p><strong>/api/health</strong> - Health check con telemetría</p>
+                <h3>📊 Available API Endpoints</h3>
+                <p><strong>/api/health</strong> - Health check with telemetry</p>
                 <a href="/api/health" class="btn">Test Health</a>
             </div>
 
             <div class="endpoint">
                 <h3>📦 Products API</h3>
-                <p><strong>/api/products</strong> - Lista de productos con métricas</p>
+                <p><strong>/api/products</strong> - Product list with metrics</p>
                 <a href="/api/products" class="btn">Get Products</a>
             </div>
 
             <div class="endpoint">
                 <h3>💥 Error Simulation</h3>
-                <p><strong>/api/simulate-error</strong> - Genera errores (30% probabilidad)</p>
+                <p><strong>/api/simulate-error</strong> - Generates errors (30% probability)</p>
                 <a href="/api/simulate-error" class="btn">Simulate Error</a>
             </div>
 
             <div class="endpoint">
                 <h3>🔥 Load Testing</h3>
-                <p><strong>/api/load-test</strong> - Simula carga de CPU</p>
+                <p><strong>/api/load-test</strong> - Simulates CPU load</p>
                 <a href="/api/load-test" class="btn">Load Test</a>
             </div>
 
             <div class="endpoint">
                 <h3>💾 Memory Testing</h3>
-                <p><strong>/api/memory-test</strong> - Simula uso de memoria</p>
+                <p><strong>/api/memory-test</strong> - Simulates memory usage</p>
                 <a href="/api/memory-test" class="btn">Memory Test</a>
             </div>
 
             <div style="margin-top: 30px; padding: 20px; background: #e7f3ff; border-radius: 5px;">
-                <h3>🎪 Para tu Demo:</h3>
+                <h3>🎪 For Your Demo:</h3>
                 <ol>
-                    <li>Abre <strong>Azure Portal</strong> → Resource Group: <code>demo-monitor-rg</code></li>
-                    <li>Ve a <strong>Application Insights</strong> → <strong>Live Metrics</strong></li>
-                    <li>Haz clic en los botones para generar tráfico</li>
-                    <li>Observa métricas en tiempo real</li>
+                    <li>Open <strong>Azure Portal</strong> → Resource Group: <code>demo-monitor-rg</code></li>
+                    <li>Go to <strong>Application Insights</strong> → <strong>Live Metrics</strong></li>
+                    <li>Click the buttons to generate traffic</li>
+                    <li>Observe real-time metrics</li>
                 </ol>
             </div>
         </div>

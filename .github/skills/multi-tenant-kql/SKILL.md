@@ -9,7 +9,7 @@ description: >-
 
 ## Purpose
 
-Enable Shift Technology to observe **multiple insurance company tenants**
+Enable the customer to observe **multiple insurance company tenants**
 in a single Azure Monitor workspace while enforcing isolation through RBAC,
 resource tags, and per-tenant data views.
 
@@ -51,7 +51,7 @@ In `infra/main.json`, add them to `variables.tags`:
 Add the corresponding parameters to `infra/main.parameters.json`:
 ```json
 "tenantSlug":  { "value": "eu-insurer-a" },
-"costCenter":  { "value": "CC-SHIFT-OBS-001" }
+"costCenter":  { "value": "CC-CUST-OBS-001" }
 ```
 
 ### 2 — Per-tenant RBAC role (ARM)
@@ -152,7 +152,7 @@ customMetrics
 
 ### 7 — Onboarding checklist for a new tenant
 
-- [ ] Create resource group `shift-<tenant-slug>-rg`.
+- [ ] Create resource group `customer-<tenant-slug>-rg`.
 - [ ] Deploy ARM template with `tenantSlug`, `costCenter`, `location` parameters.
 - [ ] Assign `Reader` role to tenant's Azure AD group on their resource group.
 - [ ] Add tenant slug to OTel Collector `resource` processor environment variable.

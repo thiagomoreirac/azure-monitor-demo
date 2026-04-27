@@ -6,27 +6,27 @@ labels: ['enhancement']
 assignees: ''
 ---
 
-## 🎯 Descripción de la Funcionalidad
-Una descripción clara de la funcionalidad que te gustaría que se agregue.
+## 🎯 Feature Description
+A clear description of the functionality you would like to add.
 
-## 💡 Motivación
-¿Por qué esta funcionalidad sería útil? ¿Qué problema resuelve?
+## 💡 Motivation
+Why would this functionality be useful? What problem does it solve?
 
-## 🔄 Alternativas Consideradas
-Describe cualquier solución alternativa que hayas considerado.
+## 🔄 Alternatives Considered
+Describe any alternative solutions you have considered.
 
-## 📋 Criterios de Aceptación
-- [ ] Criterio 1
-- [ ] Criterio 2
-- [ ] Criterio 3
+## 📋 Acceptance Criteria
+- [ ] Criterion 1
+- [ ] Criterion 2
+- [ ] Criterion 3
 
-## 🛠️ Implementación Propuesta
-Si tienes ideas sobre cómo implementar esta funcionalidad, compártelas aquí.
+## 🛠️ Proposed Implementation
+If you have ideas about how to implement this functionality, share them here.
 
-## 📊 Impacto
-- **Usuarios afectados**: [ej. todos los usuarios, solo demos, etc.]
-- **Complejidad estimada**: [baja/media/alta]
-- **Prioridad**: [baja/media/alta]
+## 📊 Impact
+- **Affected users**: [e.g. all users, demo-only, etc.]
+- **Estimated complexity**: [low/medium/high]
+- **Priority**: [low/medium/high]
 
-## 🔗 Referencias
-Enlaces a documentación, issues relacionados, etc.
+## 🔗 References
+Links to documentation, related issues, etc.

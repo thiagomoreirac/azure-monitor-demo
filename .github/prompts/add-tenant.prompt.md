@@ -1,6 +1,6 @@
 ---
 description: >-
-  Onboard a new tenant into the existing Shift Technology observability
+  Onboard a new tenant into the existing the customer observability
   platform. Creates resource group, updates ARM parameters, assigns RBAC,
   sets ingestion quota, and verifies data isolation.
 ---
@@ -12,7 +12,7 @@ You are the `azure-monitor-architect` agent. Use the `multi-tenant-kql` skill.
 Ask the user for:
 
 1. **Tenant slug** (e.g., `eu-insurer-b`) — used in resource names and tags
-2. **Cost center code** (e.g., `CC-SHIFT-OBS-002`)
+2. **Cost center code** (e.g., `CC-CUST-OBS-002`)
 3. **Azure region** for this tenant's resources
 4. **Azure AD group Object ID** — for RBAC role assignment
 5. **Daily ingestion quota (GB)** — default 5 GB if not specified
@@ -23,7 +23,7 @@ Ask the user for:
 ### 1 — Create tenant resource group
 ```powershell
 az group create `
-  --name "shift-<tenant-slug>-rg" `
+  --name "customer-<tenant-slug>-rg" `
   --location "<region>" `
   --tags tenant="<tenant-slug>" environment="prod" cost-center="<cost-center>"
 ```
@@ -31,7 +31,7 @@ az group create `
 ### 2 — Deploy ARM template for the tenant
 ```powershell
 pwsh -File scripts/deploy.ps1 `
-  -ResourceGroupName "shift-<tenant-slug>-rg" `
+  -ResourceGroupName "customer-<tenant-slug>-rg" `
   -Location "<region>"
 # Also pass: -TenantSlug "<tenant-slug>" -CostCenter "<cost-center>"
 ```
@@ -44,13 +44,13 @@ az role assignment create `
   --assignee-object-id "<AAD_GROUP_OBJECT_ID>" `
   --assignee-principal-type Group `
   --role "Reader" `
-  --scope "/subscriptions/<SUB>/resourceGroups/shift-<tenant-slug>-rg"
+  --scope "/subscriptions/<SUB>/resourceGroups/customer-<tenant-slug>-rg"
 ```
 
 ### 4 — Set daily ingestion cap
 ```powershell
 az monitor log-analytics workspace update `
-  --resource-group "shift-<tenant-slug>-rg" `
+  --resource-group "customer-<tenant-slug>-rg" `
   --workspace-name "<workspace-name>" `
   --quota <daily-gb-cap>
 ```
@@ -85,4 +85,4 @@ Append a row to the tenant table in `docs/DEMO-GUIDE.md`:
 
 | Tenant slug | Region | Cost center | Resource group | Quota |
 |---|---|---|---|---|
-| `<tenant-slug>` | `<region>` | `<cost-center>` | `shift-<tenant-slug>-rg` | `<quota> GB/day` |
+| `<tenant-slug>` | `<region>` | `<cost-center>` | `customer-<tenant-slug>-rg` | `<quota> GB/day` |

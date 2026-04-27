@@ -1,19 +1,19 @@
-# 🎯 RESUMEN FINAL - Demo de Azure Monitor
+# 🎯 FINAL SUMMARY - Azure Monitor Demo
 
-## ✅ ENTORNO COMPLETAMENTE DESPLEGADO
+## ✅ ENVIRONMENT FULLY DEPLOYED
 
-### 🏗️ Infraestructura Disponible:
+### 🏗️ Available Infrastructure
 - ✅ **Resource Group**: `demo-monitor-rg`
-- ✅ **App Service**: `app-bwkinh757hlog` 
-- ✅ **Application Insights**: Activo y capturando métricas
-- ✅ **Log Analytics Workspace**: Configurado
-- ✅ **SQL Database**: Desplegado
-- ✅ **Alertas**: 3 alertas preconfiguradas
-- ✅ **Azure Functions**: Para generación de carga
+- ✅ **App Service**: `app-bwkinh757hlog`
+- ✅ **Application Insights**: Active and capturing metrics
+- ✅ **Log Analytics Workspace**: Configured
+- ✅ **SQL Database**: Deployed
+- ✅ **Alerts**: 3 preconfigured alerts
+- ✅ **Azure Functions**: For load generation
 
-### 🌐 URLs de la Demo:
+### 🌐 Demo URLs
 ```
-Principal: https://app-bwkinh757hlog.azurewebsites.net
+Main: https://app-bwkinh757hlog.azurewebsites.net
 Health: https://app-bwkinh757hlog.azurewebsites.net/api/health
 Products: https://app-bwkinh757hlog.azurewebsites.net/api/products
 Errors: https://app-bwkinh757hlog.azurewebsites.net/api/simulate-error
@@ -21,104 +21,104 @@ Load Test: https://app-bwkinh757hlog.azurewebsites.net/api/load-test
 Memory Test: https://app-bwkinh757hlog.azurewebsites.net/api/memory-test
 ```
 
-## 🎪 DEMO READY - Puedes comenzar AHORA
+## 🎪 DEMO READY - You Can Start NOW
 
-### 1. **Demo Básica (FUNCIONA SIEMPRE)**
-Incluso si la aplicación personalizada no funciona al 100%, puedes mostrar:
+### 1. **Basic Demo (ALWAYS WORKS)**
+Even if the customized application is not 100% functional, you can still show:
 
 1. **Azure Portal**: https://portal.azure.com/#@/resource/subscriptions//resourceGroups/demo-monitor-rg/overview
-2. **Application Insights → Live Metrics**: Métricas en tiempo real del servidor
-3. **Application Insights → Application Map**: Dependencias visuales
-4. **Azure Monitor → Metrics**: Métricas de infraestructura (CPU, memoria, requests)
-5. **Alertas configuradas**: High CPU, High Response Time, High Error Rate
+2. **Application Insights → Live Metrics**: Real-time server metrics
+3. **Application Insights → Application Map**: Visual dependencies
+4. **Azure Monitor → Metrics**: Infrastructure metrics (CPU, memory, requests)
+5. **Configured alerts**: High CPU, High Response Time, High Error Rate
 
-### 2. **Si la App funciona (BONUS)**
-Adicionalmente podrás mostrar:
-- APIs personalizadas generando métricas
-- Simulación de errores controlados
-- Métricas de aplicación específicas
-- Trazas distribuidas detalladas
+### 2. **If the App Works (BONUS)**
+Additionally, you can show:
+- Customized APIs generating metrics
+- Controlled error simulation
+- Application-specific metrics
+- Detailed distributed traces
 
-## 🚀 Scripts Listos para Usar
+## 🚀 Scripts Ready to Use
 
-### Generar Tráfico:
+### Generate Traffic
 ```powershell
 .\final-test.ps1 -RequestCount 30
 ```
 
-### Test Rápido:
+### Quick Test
 ```powershell
 .\generate-traffic.ps1
 ```
 
-### Test Completo:
+### Full Test
 ```powershell
 .\test-environment.ps1
 ```
 
-## 📊 Puntos Clave para la Demo (15-20 min)
+## 📊 Key Demo Points (15-20 min)
 
-### **Apertura (2 min)**
-- Mostrar Resource Group con todos los recursos
-- Explicar arquitectura: App → Application Insights → Log Analytics
+### **Opening (2 min)**
+- Show the Resource Group with all resources
+- Explain architecture: App → Application Insights → Log Analytics
 
 ### **Live Metrics (4 min)**
 - Application Insights → Live Metrics
-- Mostrar métricas en tiempo real
-- Ejecutar scripts para generar actividad
+- Show real-time metrics
+- Run scripts to generate activity
 
 ### **Application Map (3 min)**
-- Visualización de dependencias
-- Flujo de requests
-- Health de componentes
+- Dependency visualization
+- Request flow
+- Component health
 
 ### **Performance & Failures (4 min)**
-- Análisis de rendimiento
-- Detección de errores
-- Drill-down en problemas específicos
+- Performance analysis
+- Error detection
+- Drill-down into specific issues
 
-### **Alertas & Monitoring (4 min)**
-- Alertas preconfiguradas
-- Configuración de nuevas alertas
-- Integration con notificaciones
+### **Alerts & Monitoring (4 min)**
+- Preconfigured alerts
+- New alert configuration
+- Notification integration
 
-### **Consultas KQL (3 min)**
-- Logs avanzados
-- Consultas personalizadas
-- Insights de negocio
+### **KQL Queries (3 min)**
+- Advanced logs
+- Custom queries
+- Business insights
 
-## 🎯 Consultas KQL para la Demo
+## 🎯 KQL Queries for the Demo
 
-### Requests por minuto:
+### Requests per minute
 ```kql
 requests
 | summarize count() by bin(timestamp, 1m)
 | render timechart
 ```
 
-### Top errores:
+### Top errors
 ```kql
 exceptions
 | summarize count() by type
 | order by count_ desc
 ```
 
-### Performance por endpoint:
+### Performance by endpoint
 ```kql
 requests
 | summarize avg(duration) by name
 | order by avg_duration desc
 ```
 
-## 🆘 Plan B (Si algo falla)
+## 🆘 Plan B (If something fails)
 
-1. **Usar métricas básicas de infraestructura**
-2. **Mostrar configuración de alertas**
-3. **Demostrar capacidades de Azure Monitor sin app custom**
-4. **Usar ejemplos de otros recursos en el tenant**
+1. **Use basic infrastructure metrics**
+2. **Show alert configuration**
+3. **Demonstrate Azure Monitor capabilities without the custom app**
+4. **Use examples from other resources in the tenant**
 
-## 🎉 ¡LISTO PARA IMPRESIONAR!
+## 🎉 READY TO IMPRESS!
 
-Tu entorno está **100% funcional** para demostrar las capacidades completas de Azure Monitor y Application Insights. Incluso si hay problemas menores con endpoints específicos, tienes suficiente para una demo completa y convincente.
+Your environment is **100% functional** for demonstrating the full capabilities of Azure Monitor and Application Insights. Even if there are minor issues with specific endpoints, you still have enough for a complete and convincing demo.
 
-**¡Vamos a mostrar el poder de Azure Monitor a tu cliente!** 🚀
+**Let’s showcase the power of Azure Monitor to your customer!** 🚀

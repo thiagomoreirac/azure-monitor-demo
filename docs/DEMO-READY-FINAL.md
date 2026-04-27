@@ -1,70 +1,70 @@
-# 🚀 DEMO AZURE MONITOR & APPLICATION INSIGHTS - ENTORNO LISTO
+# 🚀 AZURE MONITOR & APPLICATION INSIGHTS DEMO - ENVIRONMENT READY
 
-## ✅ Estado del Proyecto: COMPLETADO EXITOSAMENTE
+## ✅ Project Status: SUCCESSFULLY COMPLETED
 
-### 📋 Resumen del Entorno Desplegado
+### 📋 Deployed Environment Summary
 
-**Fecha de finalización:** 18 de Junio, 2025
-**Estado:** Totalmente funcional y listo para presentación
+**Completion date:** June 18, 2025
+**Status:** Fully functional and ready for presentation
 
-### 🌐 URLs del Entorno
+### 🌐 Environment URLs
 
-- **Aplicación Principal:** https://app-bwkinh757hlog.azurewebsites.net/
+- **Main Application:** https://app-bwkinh757hlog.azurewebsites.net/
 - **Health Check:** https://app-bwkinh757hlog.azurewebsites.net/health
-- **API Productos:** https://app-bwkinh757hlog.azurewebsites.net/api/products
-- **Generar Error:** https://app-bwkinh757hlog.azurewebsites.net/error
-- **Prueba de Carga:** https://app-bwkinh757hlog.azurewebsites.net/load?iterations=5000
-- **Prueba de Memoria:** https://app-bwkinh757hlog.azurewebsites.net/memory?size=1000000
-- **Prueba de Dependencias:** https://app-bwkinh757hlog.azurewebsites.net/dependencies
+- **Products API:** https://app-bwkinh757hlog.azurewebsites.net/api/products
+- **Generate Error:** https://app-bwkinh757hlog.azurewebsites.net/error
+- **Load Test:** https://app-bwkinh757hlog.azurewebsites.net/load?iterations=5000
+- **Memory Test:** https://app-bwkinh757hlog.azurewebsites.net/memory?size=1000000
+- **Dependencies Test:** https://app-bwkinh757hlog.azurewebsites.net/dependencies
 
-### 🏗️ Recursos de Azure Desplegados
+### 🏗️ Deployed Azure Resources
 
 **Resource Group:** `demo-monitor-rg`
-**Región:** North Europe
+**Region:** North Europe
 
-#### Recursos Principales:
+#### Main Resources
 1. **App Service:** `app-bwkinh757hlog`
-   - Tipo: Windows App Service
+   - Type: Windows App Service
    - Runtime: Node.js 18.12.0
-   - Estado: Running ✅
+   - Status: Running ✅
 
 2. **Application Insights:** `insights-bwkinh757hlog`
-   - Estado: Active ✅
+   - Status: Active ✅
    - Live Metrics: Enabled ✅
    - Telemetry: Collecting ✅
 
 3. **Log Analytics Workspace:** `logs-bwkinh757hlog`
-   - Estado: Active ✅
+   - Status: Active ✅
    - Retention: 30 days
 
 4. **SQL Database:** `sqldb-bwkinh757hlog`
    - Server: `sql-bwkinh757hlog`
-   - Estado: Online ✅
+   - Status: Online ✅
 
 5. **Storage Account:** `stbwkinh757hlog`
-   - Estado: Available ✅
+   - Status: Available ✅
 
 6. **Azure Functions:** `func-bwkinh757hlog`
    - Load Generator: Configured
-   - Estado: Running ✅
+   - Status: Running ✅
 
-### 🚨 Alertas Configuradas
+### 🚨 Configured Alerts
 
 1. **High Response Time Alert**
-   - Métrica: Response Time > 2000ms
-   - Estado: Enabled ✅
+   - Metric: Response Time > 2000ms
+   - Status: Enabled ✅
 
 2. **Error Rate Alert**
-   - Métrica: Failed Requests > 10%
-   - Estado: Enabled ✅
+   - Metric: Failed Requests > 10%
+   - Status: Enabled ✅
 
 3. **High CPU Alert**
-   - Métrica: CPU > 80%
-   - Estado: Enabled ✅
+   - Metric: CPU > 80%
+   - Status: Enabled ✅
 
-### 📊 Capacidades de Telemetría Implementadas
+### 📊 Implemented Telemetry Capabilities
 
-#### Métricas Automáticas:
+#### Automatic Metrics
 - ✅ HTTP Requests & Responses
 - ✅ Response Times
 - ✅ Error Rates
@@ -72,7 +72,7 @@
 - ✅ Dependency Calls
 - ✅ Exception Tracking
 
-#### Métricas Personalizadas:
+#### Custom Metrics
 - ✅ Health Check Duration
 - ✅ Products API Duration
 - ✅ Load Test Metrics
@@ -80,7 +80,7 @@
 - ✅ Error Count
 - ✅ Dependency Response Times
 
-#### Eventos Personalizados:
+#### Custom Events
 - ✅ HomePage_Visited
 - ✅ Health_Check_Requested
 - ✅ Products_API_Called
@@ -91,55 +91,55 @@
 - ✅ Application_Started
 - ✅ Application_Shutdown
 
-### 🎯 Funcionalidades para la Demo
+### 🎯 Demo Features
 
-#### 1. Página Principal Interactiva
-- Dashboard visual con métricas en tiempo real
-- Navegación a todos los endpoints de prueba
-- Interfaz moderna y responsive
+#### 1. Interactive Main Page
+- Visual dashboard with real-time metrics
+- Navigation to all test endpoints
+- Modern, responsive interface
 
-#### 2. API Endpoints Funcionales
-- `/health` - Health checks automáticos
-- `/api/products` - API de productos con simulación de base de datos
-- `/error` - Generación controlada de errores
-- `/load` - Pruebas de carga parametrizables
-- `/memory` - Pruebas de memoria con métricas detalladas
-- `/dependencies` - Simulación de llamadas a dependencias
+#### 2. Functional API Endpoints
+- `/health` - Automatic health checks
+- `/api/products` - Products API with database simulation
+- `/error` - Controlled error generation
+- `/load` - Parameterized load tests
+- `/memory` - Memory tests with detailed metrics
+- `/dependencies` - Dependency call simulation
 
-#### 3. Generación Automática de Carga
-- Azure Functions configurada para generar tráfico cada 5 minutos
-- Mantiene la aplicación activa y genera datos constantes
+#### 3. Automatic Load Generation
+- Azure Function configured to generate traffic every 5 minutes
+- Keeps the application active and produces continuous data
 
-#### 4. Monitoreo Completo
-- Application Insights capturando toda la telemetría
-- Live Metrics disponibles en tiempo real
-- Alertas configuradas y funcionando
+#### 4. Full Monitoring
+- Application Insights capturing all telemetry
+- Live Metrics available in real time
+- Alerts configured and working
 
-### 🛠️ Scripts de Utilidad
+### 🛠️ Utility Scripts
 
-- **`demo-final.ps1`** - Script completo de demostración
-- **`generate-traffic.ps1`** - Generador de tráfico para pruebas
-- **`final-test.ps1`** - Tests de verificación del entorno
-- **`deploy.ps1`** - Script de deployment completo
+- **`demo-final.ps1`** - Complete demo script
+- **`generate-traffic.ps1`** - Test traffic generator
+- **`final-test.ps1`** - Environment verification tests
+- **`deploy.ps1`** - Full deployment script
 
-### 📈 Datos de Telemetría Disponibles
+### 📈 Available Telemetry Data
 
-El entorno está generando los siguientes tipos de datos para la demostración:
+The environment is generating the following data types for the demo:
 
 1. **Request Telemetry**
-   - HTTP requests con timing completo
-   - Status codes y response sizes
+   - HTTP requests with full timing
+   - Status codes and response sizes
    - User agent tracking
 
 2. **Exception Telemetry**
-   - Errores simulados con context completo
-   - Stack traces y error categorization
-   - Custom properties para análisis
+   - Simulated errors with full context
+   - Stack traces and error categorization
+   - Custom properties for analysis
 
 3. **Dependency Telemetry**
-   - Llamadas a SQL Database (simuladas)
-   - Llamadas a Storage Account (simuladas)
-   - External API calls (simuladas)
+   - SQL Database calls (simulated)
+   - Storage Account calls (simulated)
+   - External API calls (simulated)
    - Internal service calls
 
 4. **Performance Counters**
@@ -149,89 +149,89 @@ El entorno está generando los siguientes tipos de datos para la demostración:
    - Error rates
 
 5. **Custom Metrics**
-   - Business metrics específicas
+   - Specific business metrics
    - Performance benchmarks
    - Load test results
 
-### 🎪 Guía para la Presentación
+### 🎪 Presentation Guide
 
-#### Paso 1: Mostrar la Aplicación Funcionando
-1. Abrir https://app-bwkinh757hlog.azurewebsites.net/
-2. Demostrar los diferentes endpoints
-3. Generar algunos errores y carga
+#### Step 1: Show the Application Running
+1. Open https://app-bwkinh757hlog.azurewebsites.net/
+2. Demonstrate the different endpoints
+3. Generate some errors and load
 
-#### Paso 2: Azure Portal - Application Insights
-1. Navegar a Resource Group "demo-monitor-rg"
-2. Abrir "insights-bwkinh757hlog"
-3. Mostrar Live Metrics (datos en tiempo real)
-4. Revisar Performance metrics
-5. Mostrar Exception tracking
-6. Demostrar Application Map
+#### Step 2: Azure Portal - Application Insights
+1. Navigate to Resource Group "demo-monitor-rg"
+2. Open "insights-bwkinh757hlog"
+3. Show Live Metrics (real-time data)
+4. Review performance metrics
+5. Show exception tracking
+6. Demonstrate Application Map
 
-#### Paso 3: Log Analytics & Queries
-1. Abrir Logs en Application Insights
-2. Ejecutar queries para mostrar datos:
+#### Step 3: Log Analytics & Queries
+1. Open Logs in Application Insights
+2. Run queries to display data:
    ```kusto
    requests | where timestamp > ago(1h) | summarize count() by resultCode
    exceptions | where timestamp > ago(1h) | project timestamp, type, outerMessage
    customEvents | where timestamp > ago(1h) | summarize count() by name
    ```
 
-#### Paso 4: Alertas y Monitoreo
-1. Mostrar las alertas configuradas
-2. Explicar los thresholds establecidos
-3. Demostrar cómo se activarían las alertas
+#### Step 4: Alerts and Monitoring
+1. Show the configured alerts
+2. Explain the configured thresholds
+3. Demonstrate how alerts would trigger
 
-#### Paso 5: Dashboards y Reporting
-1. Crear un dashboard simple en Azure Portal
-2. Mostrar métricas clave en gráficos
-3. Explicar capacidades de reporting
+#### Step 5: Dashboards and Reporting
+1. Create a simple dashboard in Azure Portal
+2. Show key metrics in charts
+3. Explain reporting capabilities
 
-### 🔧 Resolución de Problemas
+### 🔧 Troubleshooting
 
-#### Si la aplicación no responde:
+#### If the app does not respond
 ```powershell
-# Verificar estado del App Service
+# Check App Service state
 az webapp show --name app-bwkinh757hlog --resource-group demo-monitor-rg --query "state"
 
-# Reiniciar si es necesario
+# Restart if needed
 az webapp restart --name app-bwkinh757hlog --resource-group demo-monitor-rg
 ```
 
-#### Si no hay datos en Application Insights:
+#### If there is no data in Application Insights
 ```powershell
-# Generar tráfico de prueba
+# Generate test traffic
 .\demo-final.ps1
 
-# Verificar connection string
+# Verify connection string
 az webapp config appsettings list --name app-bwkinh757hlog --resource-group demo-monitor-rg --query "[?name=='APPLICATIONINSIGHTS_CONNECTION_STRING']"
 ```
 
-### 💰 Información de Costos
+### 💰 Cost Information
 
-**Estimación de costos diarios (para demo):**
-- App Service (B1): ~$0.50/día
-- Application Insights: ~$0.10/día
-- SQL Database (Basic): ~$0.15/día
-- Storage Account: ~$0.01/día
-- **Total aproximado: $0.76/día**
+**Estimated daily costs (demo):**
+- App Service (B1): ~$0.50/day
+- Application Insights: ~$0.10/day
+- SQL Database (Basic): ~$0.15/day
+- Storage Account: ~$0.01/day
+- **Approximate total: $0.76/day**
 
-### 🧹 Limpieza Post-Demo
+### 🧹 Post-Demo Cleanup
 
-Para limpiar todos los recursos después de la demo:
+To delete all resources after the demo:
 ```powershell
 az group delete --name demo-monitor-rg --yes --no-wait
 ```
 
 ---
 
-## 🎉 ENTORNO COMPLETAMENTE LISTO PARA PRESENTACIÓN
+## 🎉 ENVIRONMENT FULLY READY FOR PRESENTATION
 
-**Todas las funcionalidades están operativas y generando telemetría en tiempo real.**
+**All features are operational and generating real-time telemetry.**
 
-**La demo puede comenzar inmediatamente usando las URLs y scripts proporcionados.**
+**The demo can start immediately using the provided URLs and scripts.**
 
 ---
 
-*Documento generado automáticamente el 18 de Junio, 2025*
-*Estado: PRODUCCIÓN - LISTO PARA DEMO*
+*Document automatically generated on June 18, 2025*
+*Status: PRODUCTION - DEMO READY*

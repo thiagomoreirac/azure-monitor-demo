@@ -1,55 +1,55 @@
-# 💻 Código Fuente
+# 💻 Source Code
 
-Este directorio contiene todo el código fuente de las aplicaciones de demostración.
+This directory contains all source code for the demo applications.
 
-## Estructura
+## Structure
 
-### 🌐 Aplicaciones Web
-- **`webapp-simple/`** - Aplicación Node.js con Express y Application Insights
-- **`web/`** - Aplicación .NET Core (alternativa)
-- **`web-node/`** - Aplicación Node.js básica
+### 🌐 Web Applications
+- **`webapp-simple/`** - Node.js app with Express and Application Insights
+- **`web/`** - .NET Core app (alternative)
+- **`web-node/`** - Basic Node.js app
 
 ### ⚡ Azure Functions
-- **`loadtest/`** - Functions para generación automática de carga
+- **`loadtest/`** - Functions for automatic load generation
 
-## Tecnologías
+## Technologies
 
 ### Node.js Application (`webapp-simple/`)
-- **Express.js** - Framework web
-- **Application Insights SDK** - Telemetría
+- **Express.js** - Web framework
+- **Application Insights SDK** - Telemetry
 - **Node.js 18 LTS** - Runtime
 
 ### .NET Application (`web/`)
-- **ASP.NET Core** - Framework web
-- **Application Insights** - Telemetría
+- **ASP.NET Core** - Web framework
+- **Application Insights** - Telemetry
 - **.NET 8** - Runtime
 
-## Configuración
+## Configuration
 
-### Variables de Entorno Requeridas
+### Required Environment Variables
 ```
 APPLICATIONINSIGHTS_CONNECTION_STRING=your-connection-string
 WEBSITE_NODE_DEFAULT_VERSION=18.12.0
 ```
 
-### Endpoints Disponibles
-- `GET /` - Dashboard principal
+### Available Endpoints
+- `GET /` - Main dashboard
 - `GET /health` - Health check
-- `GET /api/products` - API de productos
-- `GET /error` - Simulación de errores
-- `GET /load` - Pruebas de carga
-- `GET /memory` - Pruebas de memoria
-- `GET /dependencies` - Simulación de dependencias
+- `GET /api/products` - Products API
+- `GET /error` - Error simulation
+- `GET /load` - Load testing
+- `GET /memory` - Memory testing
+- `GET /dependencies` - Dependency simulation
 
-## Desarrollo Local
+## Local Development
 
 ```bash
-# Para Node.js
+# For Node.js
 cd src/webapp-simple
 npm install
 npm start
 
-# Para .NET
+# For .NET
 cd src/web
 dotnet restore
 dotnet run

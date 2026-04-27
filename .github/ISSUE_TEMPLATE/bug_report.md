@@ -6,32 +6,32 @@ labels: ['bug']
 assignees: ''
 ---
 
-## 🐛 Descripción del Bug
-Una descripción clara y concisa del bug.
+## 🐛 Bug Description
+A clear and concise description of the bug.
 
-## 🔄 Pasos para Reproducir
-1. Ve a '...'
-2. Ejecuta '...'
-3. Observa el error
+## 🔄 Steps to Reproduce
+1. Go to '...'
+2. Run '...'
+3. Observe the error
 
-## ✅ Comportamiento Esperado
-Descripción clara de lo que esperabas que ocurriera.
+## ✅ Expected Behavior
+Clear description of what you expected to happen.
 
-## ❌ Comportamiento Actual
-Descripción clara de lo que realmente ocurrió.
+## ❌ Actual Behavior
+Clear description of what actually happened.
 
-## 📱 Entorno
-- **SO**: [ej. Windows 11]
-- **PowerShell**: [ej. 5.1]
-- **Azure CLI**: [ej. 2.40.0]
-- **Región Azure**: [ej. North Europe]
+## 📱 Environment
+- **OS**: [e.g. Windows 11]
+- **PowerShell**: [e.g. 5.1]
+- **Azure CLI**: [e.g. 2.40.0]
+- **Azure Region**: [e.g. North Europe]
 
 ## 📊 Logs/Screenshots
-Si aplica, agrega logs o screenshots para ayudar a explicar el problema.
+If applicable, add logs or screenshots to help explain the issue.
 
 ```
-Pega aquí los logs relevantes
+Paste relevant logs here
 ```
 
-## 🔍 Información Adicional
-Cualquier otro contexto sobre el problema.
+## 🔍 Additional Information
+Any other context about the issue.

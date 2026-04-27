@@ -1,4 +1,4 @@
-# Script completo para probar el entorno de Azure Monitor Demo
+# Full script to test the Azure Monitor Demo environment
 param(
     [Parameter(Mandatory=$false)]
     [string]$AppUrl = "https://app-bwkinh757hlog.azurewebsites.net",

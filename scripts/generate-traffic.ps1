@@ -42,31 +42,31 @@ try {
             Start-Sleep -Milliseconds 500
         }
         
-        Write-Host "`n✅ Tráfico generado exitosamente!" -ForegroundColor Green
-        Write-Host "`n📊 Ahora puedes:" -ForegroundColor Cyan
-        Write-Host "1. Abrir Azure Portal → Resource Group: demo-monitor-rg" -ForegroundColor White
-        Write-Host "2. Ir a Application Insights" -ForegroundColor White
-        Write-Host "3. Ver Live Metrics" -ForegroundColor White
-        Write-Host "4. Explorar métricas y logs" -ForegroundColor White
+        Write-Host "`n✅ Traffic generated successfully!" -ForegroundColor Green
+        Write-Host "`n📊 You can now:" -ForegroundColor Cyan
+        Write-Host "1. Open Azure Portal → Resource Group: demo-monitor-rg" -ForegroundColor White
+        Write-Host "2. Go to Application Insights" -ForegroundColor White
+        Write-Host "3. View Live Metrics" -ForegroundColor White
+        Write-Host "4. Explore metrics and logs" -ForegroundColor White
         
     } else {
-        Write-Host "⚠️ Aplicación responde con código: $($response.StatusCode)" -ForegroundColor Yellow
+        Write-Host "⚠️ Application responded with status code: $($response.StatusCode)" -ForegroundColor Yellow
     }
 }
 catch {
-    Write-Host "❌ Aplicación aún no disponible: $($_.Exception.Message)" -ForegroundColor Red
-    Write-Host "`n💡 Posibles razones:" -ForegroundColor Yellow
-    Write-Host "1. El despliegue aún está en proceso" -ForegroundColor White
-    Write-Host "2. La aplicación está arrancando" -ForegroundColor White
-    Write-Host "3. Problemas de compilación" -ForegroundColor White
+    Write-Host "❌ Application is not available yet: $($_.Exception.Message)" -ForegroundColor Red
+    Write-Host "`n💡 Possible reasons:" -ForegroundColor Yellow
+    Write-Host "1. Deployment is still in progress" -ForegroundColor White
+    Write-Host "2. The application is starting up" -ForegroundColor White
+    Write-Host "3. Build issues" -ForegroundColor White
     
-    Write-Host "`n🔧 Mientras tanto, puedes:" -ForegroundColor Cyan
-    Write-Host "1. Verificar logs en Azure Portal → App Service → Log stream" -ForegroundColor White
-    Write-Host "2. Revisar métricas básicas de infraestructura" -ForegroundColor White
-    Write-Host "3. Configurar Application Insights" -ForegroundColor White
+    Write-Host "`n🔧 In the meantime, you can:" -ForegroundColor Cyan
+    Write-Host "1. Check logs in Azure Portal → App Service → Log stream" -ForegroundColor White
+    Write-Host "2. Review basic infrastructure metrics" -ForegroundColor White
+    Write-Host "3. Configure Application Insights" -ForegroundColor White
 }
 
-Write-Host "`n🌐 URLs para tu demo:" -ForegroundColor Cyan
+Write-Host "`n🌐 URLs for your demo:" -ForegroundColor Cyan
 Write-Host "===============================================" -ForegroundColor Cyan
 Write-Host "App URL: $AppUrl" -ForegroundColor White
 Write-Host "Swagger: $AppUrl/swagger" -ForegroundColor White
@@ -76,5 +76,5 @@ Write-Host "Errors: $AppUrl/api/simulate-error" -ForegroundColor White
 Write-Host "Load Test: $AppUrl/api/load-test" -ForegroundColor White
 Write-Host "Memory Test: $AppUrl/api/memory-test" -ForegroundColor White
 
-Write-Host "`n🎯 Para abrir Azure Portal:" -ForegroundColor Cyan
+Write-Host "`n🎯 To open Azure Portal:" -ForegroundColor Cyan
 Write-Host "https://portal.azure.com/#@/resource/subscriptions//resourceGroups/demo-monitor-rg/overview" -ForegroundColor White

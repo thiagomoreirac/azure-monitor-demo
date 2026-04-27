@@ -10,7 +10,7 @@ description: >-
 ## Purpose
 
 Generate or update Azure Monitor dashboard tiles and Log Analytics KQL queries
-tailored to Shift Technology's observability requirements: insurance claims,
+tailored to the customer's observability requirements: insurance claims,
 fraud detection, policy management, and external-service dependencies.
 
 ## Procedure
@@ -79,7 +79,7 @@ source reference so the name resolves at deploy time.
 - Paste each KQL query into the Log Analytics query editor and verify it returns
   data before including it in a dashboard.
 
-## Reference KQL library (Shift Technology)
+## Reference KQL library (the customer)
 
 ```kql
 // ── Claims processing latency (p50 / p95 over time) ──────────────────────

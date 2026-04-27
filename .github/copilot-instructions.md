@@ -1,14 +1,14 @@
-# GitHub Copilot Instructions – Azure Monitor Demo (Shift Technology)
+# GitHub Copilot Instructions – Azure Monitor Demo (the customer)
 
 ## Customer context
 
-This demo is being customized for **Shift Technology**, an AI-driven insurance claims and fraud-detection company.  
+This demo is being customized for **the customer**, an AI-driven insurance claims and fraud-detection company.  
 The two reference documents in `docs/` describe their observability platform requirements:
 
-- `docs/Shift-Technology-Observability-Platform-v7-Main.pdf` — high-level platform requirements
-- `docs/Shift-Technology-Observability-Platform-v7-Annex-B-Technical.pdf` — technical architecture details
+- `docs/Customer-Observability-Platform-v7-Main.pdf` — high-level platform requirements
+- `docs/Customer-Observability-Platform-v7-Annex-B-Technical.pdf` — technical architecture details
 
-When generating code, names, labels, dashboard titles, alert descriptions, KQL queries, or any user-facing strings, align them with Shift Technology's domain (insurance, claims processing, fraud detection, policy management) and the observability requirements described in those documents.
+When generating code, names, labels, dashboard titles, alert descriptions, KQL queries, or any user-facing strings, align them with the customer's domain (insurance, claims processing, fraud detection, policy management) and the observability requirements described in those documents.
 
 ---
 
@@ -86,17 +86,17 @@ Invoke with: `@azure-monitor-architect <your request>`
 
 ---
 
-## How to customize the demo for Shift Technology
+## How to customize the demo for the customer
 
 ### 1. Rename resources and labels
 
-- Change `environmentName` default in `infra/main.parameters.json` to something like `shift-monitor`.
+- Change `environmentName` default in `infra/main.parameters.json` to something like `customer-monitor`.
 - Update resource-naming prefixes in `infra/main.json` (search for `demo-monitor`, `app-`, `log-`, `appi-`).
 - Update displayed app title and endpoint descriptions in `src/webapp-simple/server.js`.
 
 ### 2. Add customer-specific telemetry
 
-In `src/webapp-simple/server.js`, add custom events and metrics that mirror Shift Technology's business domain:
+In `src/webapp-simple/server.js`, add custom events and metrics that mirror the customer's business domain:
 
 - **Custom Events**: `ClaimSubmitted`, `FraudFlagRaised`, `PolicyQueried`, `DetectionModelCalled`
 - **Custom Metrics**: `ClaimProcessingTime`, `FraudDetectionLatency`, `ModelInferenceTime`
@@ -104,7 +104,7 @@ In `src/webapp-simple/server.js`, add custom events and metrics that mirror Shif
 
 ### 3. Tailor alerts
 
-In `infra/main.json`, update the three alert rules to reflect Shift Technology SLAs:
+In `infra/main.json`, update the three alert rules to reflect the customer SLAs:
 
 | Alert | Recommended threshold |
 |---|---|
@@ -147,7 +147,7 @@ az account set --subscription "<SUBSCRIPTION_ID>"
 # Update infra/main.parameters.json: environmentName, location, administratorLogin, administratorPassword
 
 # 3. Deploy everything
-pwsh -File scripts/deploy.ps1 -ResourceGroupName "shift-monitor-rg" -Location "northeurope"
+pwsh -File scripts/deploy.ps1 -ResourceGroupName "customer-monitor-rg" -Location "northeurope"
 ```
 
 ---
@@ -175,11 +175,11 @@ pwsh -File scripts/deploy.ps1 -ResourceGroupName "shift-monitor-rg" -Location "n
 
 ---
 
-## Demo flow (15 min – Shift Technology version)
+## Demo flow (15 min – the customer version)
 
 1. **Architecture overview** (2 min) – show the resource group in Azure Portal.
 2. **Live Metrics** (3 min) – open Application Insights → Live Metrics, trigger `/api/load-test`.
 3. **Claims & fraud events** (3 min) – show custom events in the Logs blade with the KQL queries above.
-4. **Alerts** (2 min) – show the three alert rules; explain how they map to Shift Technology SLAs.
+4. **Alerts** (2 min) – show the three alert rules; explain how they map to the customer SLAs.
 5. **Application Map** (2 min) – show dependencies (SQL, external fraud API simulation).
 6. **Q&A** (3 min).

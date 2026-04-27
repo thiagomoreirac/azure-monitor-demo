@@ -13,11 +13,11 @@ and the customer PDF documents in `docs/` before proceeding.
 Before starting, confirm the following with the user (use defaults if already
 set in `infra/main.parameters.json`):
 
-1. **Customer name / slug** (e.g., `shift-technology`)
+1. **Customer name / slug** (e.g., `customer`)
 2. **Azure region** (e.g., `northeurope`)
 3. **Number of tenants** and their slugs
 4. **Subscription ID(s)**
-5. **Key business domains** (claims, fraud, policy — already known for Shift Technology)
+5. **Key business domains** (claims, fraud, policy — already known for the customer)
 6. **SLA thresholds** (response time, error rate, CPU)
 
 ## Customization checklist

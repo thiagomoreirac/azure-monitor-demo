@@ -1,28 +1,28 @@
 # 📜 Scripts
 
-Este directorio contiene todos los scripts de PowerShell para automatizar el despliegue y gestión del entorno de demostración.
+This directory contains all PowerShell scripts used to automate deployment and management of the demo environment.
 
-## Scripts Disponibles
+## Available Scripts
 
-### 🚀 Despliegue
-- **`deploy.ps1`** - Script principal de despliegue de infraestructura
-- **`demo-final.ps1`** - Script completo de demostración y pruebas
+### 🚀 Deployment
+- **`deploy.ps1`** - Main infrastructure deployment script
+- **`demo-final.ps1`** - Complete demo and testing script
 
-### 🔄 Utilidades
-- **`generate-traffic.ps1`** - Generador de tráfico para pruebas
-- **`final-test.ps1`** - Tests de verificación del entorno
-- **`test-environment.ps1`** - Validación del entorno
+### 🔄 Utilities
+- **`generate-traffic.ps1`** - Test traffic generator
+- **`final-test.ps1`** - Environment verification tests
+- **`test-environment.ps1`** - Environment validation
 
-## Uso
+## Usage
 
 ```powershell
-# Ejecutar desde el directorio raíz del proyecto
+# Run from the project root directory
 .\scripts\deploy.ps1
 .\scripts\demo-final.ps1
 ```
 
-## Prerrequisitos
+## Prerequisites
 
-- Azure CLI configurado
+- Azure CLI configured
 - PowerShell 5.1+
-- Permisos en Azure subscription
+- Permissions in the Azure subscription

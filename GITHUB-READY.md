@@ -1,182 +1,182 @@
-# 🎉 PROYECTO COMPLETAMENTE PREPARADO PARA GITHUB
+# 🎉 PROJECT FULLY PREPARED FOR GITHUB
 
-## ✅ Estado Final: LISTO PARA PUBLICACIÓN
+## ✅ Final Status: READY TO PUBLISH
 
-El proyecto **Azure Monitor & Application Insights Demo** está completamente preparado y organizado para ser publicado en GitHub como un repositorio profesional.
+The **Azure Monitor & Application Insights Demo** project is fully prepared and organized to be published on GitHub as a professional repository.
 
-## 📁 Estructura Final Organizada
+## 📁 Final Organized Structure
 
-```
+```text
 azure-monitor-demo/
-├── 📄 README.md                    # Documentación principal
-├── 📄 LICENSE                      # Licencia MIT
-├── 📄 .gitignore                   # Archivos a ignorar
-├── 📄 .env.example                 # Variables de entorno de ejemplo
-├── 📄 CONTRIBUTING.md              # Guía de contribución
-├── 📄 QUICKSTART.md                # Guía de inicio rápido
-├── 📄 azure-monitor-demo.code-workspace  # Workspace VS Code
-├── 📄 init-github.ps1              # Script de inicialización Git
-├── 📄 validate-github.ps1          # Script de validación
-├── 📄 prepare-github.ps1           # Script de preparación
-├── 📁 .github/                     # Configuración GitHub
+├── 📄 README.md                    # Main documentation
+├── 📄 LICENSE                      # MIT license
+├── 📄 .gitignore                   # Ignored files
+├── 📄 .env.example                 # Example environment variables
+├── 📄 CONTRIBUTING.md              # Contribution guide
+├── 📄 QUICKSTART.md                # Quick start guide
+├── 📄 azure-monitor-demo.code-workspace  # VS Code workspace
+├── 📄 init-github.ps1              # Git initialization script
+├── 📄 validate-github.ps1          # Validation script
+├── 📄 prepare-github.ps1           # Preparation script
+├── 📁 .github/                     # GitHub configuration
 │   ├── 📁 workflows/
 │   │   └── validate.yml            # GitHub Actions
 │   └── 📁 ISSUE_TEMPLATE/
-│       ├── bug_report.md           # Plantilla bugs
-│       └── feature_request.md      # Plantilla features
-├── 📁 .vscode/                     # Configuración VS Code
-│   └── extensions.json             # Extensiones recomendadas
-├── 📁 docs/                        # Documentación completa
-│   ├── README.md                   # Índice de documentación
-│   ├── DEMO-GUIDE.md              # Guía de demostración
-│   ├── DEPLOYMENT.md              # Guía de despliegue
-│   ├── DEMO-READY-FINAL.md        # Estado final del proyecto
-│   └── FINAL-SUMMARY.md           # Resumen técnico
-├── 📁 scripts/                     # Scripts PowerShell
-│   ├── README.md                   # Documentación de scripts
-│   ├── deploy.ps1                 # Despliegue principal
-│   ├── demo-final.ps1             # Demostración completa
-│   ├── generate-traffic.ps1       # Generador de tráfico
-│   ├── final-test.ps1             # Tests de verificación
-│   └── test-environment.ps1       # Validación de entorno
-├── 📁 src/                         # Código fuente
-│   ├── README.md                   # Documentación de código
-│   ├── 📁 webapp-simple/          # Aplicación Node.js principal
-│   │   ├── server.js              # Servidor Express + AI
-│   │   ├── package.json           # Dependencias Node.js
-│   │   └── web.config             # Configuración IIS
-│   ├── 📁 web/                    # Aplicación .NET alternativa
-│   ├── 📁 web-node/               # App Node.js básica
-│   └── 📁 loadtest/               # Azure Functions carga
-└── 📁 infra/                       # Infraestructura como Código
-    ├── main.json                   # ARM Template principal
-    └── main.parameters.json        # Parámetros configuración
+│       ├── bug_report.md           # Bug template
+│       └── feature_request.md      # Feature template
+├── 📁 .vscode/                     # VS Code configuration
+│   └── extensions.json             # Recommended extensions
+├── 📁 docs/                        # Full documentation
+│   ├── README.md                   # Documentation index
+│   ├── DEMO-GUIDE.md               # Demo guide
+│   ├── DEPLOYMENT.md               # Deployment guide
+│   ├── DEMO-READY-FINAL.md         # Final project status
+│   └── FINAL-SUMMARY.md            # Technical summary
+├── 📁 scripts/                     # PowerShell scripts
+│   ├── README.md                   # Script documentation
+│   ├── deploy.ps1                  # Main deployment
+│   ├── demo-final.ps1              # Complete demo script
+│   ├── generate-traffic.ps1        # Traffic generator
+│   ├── final-test.ps1              # Verification tests
+│   └── test-environment.ps1        # Environment validation
+├── 📁 src/                         # Source code
+│   ├── README.md                   # Source documentation
+│   ├── 📁 webapp-simple/           # Main Node.js app
+│   │   ├── server.js               # Express server + AI
+│   │   ├── package.json            # Node.js dependencies
+│   │   └── web.config              # IIS configuration
+│   ├── 📁 web/                     # Alternative .NET app
+│   ├── 📁 web-node/                # Basic Node.js app
+│   └── 📁 loadtest/                # Azure Functions load test
+└── 📁 infra/                       # Infrastructure as Code
+    ├── main.json                   # Main ARM template
+    └── main.parameters.json        # Template parameters
 ```
 
-## 🧹 Limpieza Completada
+## 🧹 Cleanup Completed
 
-### ✅ Archivos Removidos (no apropiados para GitHub)
-- `*.zip` - Archivos de deployment
-- `logs-extracted/` - Logs temporales
-- `temp-logs/` - Logs de debug
-- `Lab.sln` - Archivo de solución específico
-- `DEMO-CREDENTIALS.md` - Información sensible
+### ✅ Removed Files (not suitable for GitHub)
+- `*.zip` - Deployment artifacts
+- `logs-extracted/` - Temporary logs
+- `temp-logs/` - Debug logs
+- `Lab.sln` - Specific solution file
+- `DEMO-CREDENTIALS.md` - Sensitive information
 
-### ✅ Información Sensible Sanitizada
-- **Connection strings** reemplazados por placeholders
-- **Instrumentation keys** removidos del código
-- **Passwords** reemplazados por ejemplos genéricos
-- **IDs específicos** convertidos a variables de entorno
+### ✅ Sensitive Information Sanitized
+- **Connection strings** replaced with placeholders
+- **Instrumentation keys** removed from code
+- **Passwords** replaced with generic examples
+- **Specific IDs** converted to environment variables
 
-## 🎯 Funcionalidades del Repositorio
+## 🎯 Repository Capabilities
 
-### 📚 Documentación Completa
-- **README.md profesional** con badges, arquitectura e instrucciones
-- **Guías paso a paso** para deployment y demostración
-- **Documentación técnica** detallada en `/docs`
-- **Quick start guide** para setup express
+### 📚 Complete Documentation
+- Professional **README.md** with architecture and instructions
+- Step-by-step guides for deployment and demo execution
+- Detailed technical documentation in `/docs`
+- Quick start guide for fast setup
 
-### 🛠️ Automatización
-- **Scripts PowerShell organizados** en `/scripts`
-- **GitHub Actions** para validación automática
-- **VS Code workspace** preconfigurado
-- **Extensiones recomendadas** para desarrollo
+### 🛠️ Automation
+- Organized **PowerShell scripts** under `/scripts`
+- **GitHub Actions** for automated validation
+- Preconfigured **VS Code workspace**
+- Recommended extension list for development
 
-### 🔧 Configuración Profesional
-- **.gitignore completo** para proyectos Azure/Node.js/.NET
-- **Licencia MIT** incluida
-- **Guías de contribución** establecidas
-- **Templates de issues** para GitHub
+### 🔧 Professional Configuration
+- Complete **.gitignore** for Azure/Node.js/.NET projects
+- Included **MIT license**
+- Established contribution guidelines
+- GitHub issue templates
 
-### 🚀 Deployment Automatizado
-- **ARM Templates** listos para usar
-- **Scripts de deployment** completamente funcionales
-- **Configuración de CI/CD** con GitHub Actions
-- **Variables de entorno** documentadas
+### 🚀 Automated Deployment
+- **ARM templates** ready to use
+- Fully functional deployment scripts
+- CI/CD setup with GitHub Actions
+- Documented environment variables
 
-## 📋 Próximos Pasos
+## 📋 Next Steps
 
-### 1. Inicializar Git (Ejecutar cuando tengas Git instalado)
+### 1. Initialize Git (run once Git is installed)
 ```powershell
 .\init-github.ps1
 ```
 
-### 2. Crear Repositorio en GitHub
-1. Ir a https://github.com/new
-2. Nombre: `azure-monitor-demo`
-3. Descripción: "Complete Azure Monitor & Application Insights demo environment with infrastructure as code"
-4. Público o Privado según preferencia
-5. No inicializar con README (ya tenemos uno)
+### 2. Create the GitHub Repository
+1. Go to https://github.com/new
+2. Name: `azure-monitor-demo`
+3. Description: "Complete Azure Monitor & Application Insights demo environment with infrastructure as code"
+4. Choose Public or Private as preferred
+5. Do not initialize with README (already included)
 
-### 3. Conectar y Subir
+### 3. Connect and Push
 ```bash
-git remote add origin https://github.com/tu-usuario/azure-monitor-demo.git
+git remote add origin https://github.com/your-username/azure-monitor-demo.git
 git branch -M main
 git push -u origin main
 ```
 
-### 4. Configurar GitHub (Opcional)
+### 4. Configure GitHub (optional)
 - **Topics/Tags**: `azure`, `monitor`, `application-insights`, `demo`, `arm-templates`, `nodejs`, `powershell`
 - **About**: "Complete demo environment for Azure Monitor and Application Insights with automation scripts"
-- **Website**: Link a la documentación desplegada
-- **GitHub Pages**: Activar para docs/ si quieres
+- **Website**: Link to deployed documentation
+- **GitHub Pages**: Enable for `docs/` if desired
 
-### 5. Secrets para GitHub Actions (Opcional)
-- Ir a Settings > Secrets and variables > Actions
-- Agregar `AZURE_CREDENTIALS` para validación automática
+### 5. Set GitHub Actions Secrets (optional)
+- Go to Settings > Secrets and variables > Actions
+- Add `AZURE_CREDENTIALS` for automated validation
 
-## 🌟 Características del Repositorio
+## 🌟 Repository Highlights
 
-### ✨ Para Desarrolladores
-- **Setup en 1 comando**: `.\scripts\deploy.ps1`
-- **Documentación clara** y ejemplos prácticos
-- **Código limpio** sin información sensible
-- **Estructura organizada** y fácil de navegar
+### ✨ For Developers
+- **One-command setup**: `.\scripts\deploy.ps1`
+- Clear documentation and practical examples
+- Clean code with no sensitive data
+- Organized and easy-to-navigate structure
 
-### 🎪 Para Demos
-- **Aplicación funcional** con telemetría completa
-- **Scripts de demostración** automatizados
-- **Guías paso a paso** para presentaciones
-- **URLs listas** para mostrar en vivo
+### 🎪 For Demos
+- Functional app with complete telemetry
+- Automated demo scripts
+- Step-by-step presentation guides
+- Ready-to-use live URLs
 
-### 🏗️ Para DevOps
-- **Infrastructure as Code** con ARM Templates
-- **CI/CD pipeline** con GitHub Actions
-- **Validación automática** de templates
-- **Scripts de cleanup** para recursos
+### 🏗️ For DevOps
+- Infrastructure as Code with ARM templates
+- CI/CD pipeline using GitHub Actions
+- Automated template validation
+- Cleanup scripts for cloud resources
 
-## 💎 Calidad del Código
+## 💎 Code Quality
 
-### ✅ Estándares Seguidos
-- **Markdown linting** configurado
-- **PowerShell best practices** implementadas
-- **JSON validado** en ARM templates
-- **Comentarios descriptivos** en todo el código
+### ✅ Standards Followed
+- Markdown linting configured
+- PowerShell best practices applied
+- ARM JSON validated
+- Descriptive comments in code
 
-### ✅ Seguridad
-- **No secrets** en el código
-- **Variables de entorno** para configuración sensible
-- **.gitignore robusto** para evitar leaks
-- **Licencia clara** para uso
+### ✅ Security
+- No secrets in source code
+- Environment variables for sensitive configuration
+- Robust `.gitignore` to avoid leaks
+- Clear licensing for reuse
 
-## 🎉 RESULTADO FINAL
+## 🎉 FINAL RESULT
 
-**Tu repositorio GitHub será:**
-- 🏆 **Profesional y bien organizado**
-- 📚 **Completamente documentado**
-- 🔧 **Funcional desde el primer momento**
-- 🎯 **Listo para impresionar en demos**
-- 🚀 **Fácil de usar y contribuir**
+**Your GitHub repository will be:**
+- 🏆 Professional and well organized
+- 📚 Fully documented
+- 🔧 Functional from day one
+- 🎯 Ready to impress in demos
+- 🚀 Easy to use and contribute to
 
 ---
 
-## 🎊 ¡FELICITACIONES!
+## 🎊 CONGRATULATIONS!
 
-Has creado un repositorio de demostración de **calidad profesional** que:
+You have created a **professional-grade** demo repository that:
 
-✨ **Demuestra expertise técnico** en Azure Monitor y Application Insights  
-✨ **Incluye automatización completa** desde infraestructura hasta demostración  
-✨ **Sigue best practices** de desarrollo y documentación  
-✨ **Está listo para ser compartido** con clientes, colegas o la comunidad  
+✨ Demonstrates strong Azure Monitor and Application Insights expertise  
+✨ Includes complete automation from infrastructure to demo execution  
+✨ Follows development and documentation best practices  
+✨ Is ready to share with customers, teammates, and the community  
 
-**¡Tu proyecto Azure Monitor Demo está listo para brillar en GitHub!** 🌟
+**Your Azure Monitor Demo project is ready to shine on GitHub!** 🌟

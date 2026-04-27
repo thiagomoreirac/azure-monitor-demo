@@ -1,54 +1,54 @@
-# 🚀 Script de Inicialización para GitHub
-# Ejecutar este script después de instalar Git
+# 🚀 GitHub Initialization Script
+# Run this script after installing Git
 
-Write-Host "🎯 Inicializando repositorio Git para Azure Monitor Demo..." -ForegroundColor Cyan
+Write-Host "🎯 Initializing Git repository for Azure Monitor Demo..." -ForegroundColor Cyan
 Write-Host ""
 
-# Verificar que Git esté instalado
+# Verify Git is installed
 try {
     git --version | Out-Null
-    Write-Host "✅ Git detectado" -ForegroundColor Green
+    Write-Host "✅ Git detected" -ForegroundColor Green
 } catch {
-    Write-Host "❌ Git no está instalado. Por favor instalar Git primero:" -ForegroundColor Red
+    Write-Host "❌ Git is not installed. Please install Git first:" -ForegroundColor Red
     Write-Host "   https://git-scm.com/download/windows" -ForegroundColor Yellow
     exit 1
 }
 
-# Inicializar repositorio si no existe
+# Initialize repository if it does not exist
 if (-not (Test-Path ".git")) {
-    Write-Host "📂 Inicializando repositorio Git..." -ForegroundColor Yellow
+    Write-Host "📂 Initializing Git repository..." -ForegroundColor Yellow
     git init
-    Write-Host "✅ Repositorio inicializado" -ForegroundColor Green
+    Write-Host "✅ Repository initialized" -ForegroundColor Green
 } else {
-    Write-Host "✅ Repositorio Git ya existe" -ForegroundColor Green
+    Write-Host "✅ Git repository already exists" -ForegroundColor Green
 }
 
-# Configurar usuario si no está configurado
+# Configure user if not set
 $userName = git config user.name
 $userEmail = git config user.email
 
 if (-not $userName) {
-    $name = Read-Host "Introduce tu nombre para Git"
+    $name = Read-Host "Enter your name for Git"
     git config user.name $name
-    Write-Host "✅ Nombre configurado: $name" -ForegroundColor Green
+    Write-Host "✅ Name configured: $name" -ForegroundColor Green
 }
 
 if (-not $userEmail) {
-    $email = Read-Host "Introduce tu email para Git"
+    $email = Read-Host "Enter your email for Git"
     git config user.email $email
-    Write-Host "✅ Email configurado: $email" -ForegroundColor Green
+    Write-Host "✅ Email configured: $email" -ForegroundColor Green
 }
 
-# Agregar archivos
-Write-Host "📦 Agregando archivos al repositorio..." -ForegroundColor Yellow
+# Add files
+Write-Host "📦 Adding files to the repository..." -ForegroundColor Yellow
 git add .
 
-# Verificar estado
-Write-Host "📊 Estado del repositorio:" -ForegroundColor Yellow
+# Check status
+Write-Host "📊 Repository status:" -ForegroundColor Yellow
 git status --short
 
-# Hacer commit inicial
-Write-Host "💾 Creando commit inicial..." -ForegroundColor Yellow
+# Create initial commit
+Write-Host "💾 Creating initial commit..." -ForegroundColor Yellow
 git commit -m "feat: Initial commit - Azure Monitor Demo project
 
 ✨ Features:
@@ -68,36 +68,36 @@ git commit -m "feat: Initial commit - Azure Monitor Demo project
 
 🎯 Ready for demo presentations!"
 
-Write-Host "✅ Commit inicial creado" -ForegroundColor Green
+Write-Host "✅ Initial commit created" -ForegroundColor Green
 
 Write-Host ""
-Write-Host "🎉 Repositorio preparado para GitHub!" -ForegroundColor Green
+Write-Host "🎉 Repository prepared for GitHub!" -ForegroundColor Green
 Write-Host ""
-Write-Host "📋 Próximos pasos:" -ForegroundColor White
-Write-Host "1. Crear repositorio en GitHub:" -ForegroundColor Cyan
+Write-Host "📋 Next steps:" -ForegroundColor White
+Write-Host "1. Create repository on GitHub:" -ForegroundColor Cyan
 Write-Host "   https://github.com/new" -ForegroundColor Blue
 Write-Host ""
-Write-Host "2. Conectar repositorio local con GitHub:" -ForegroundColor Cyan
-Write-Host "   git remote add origin https://github.com/tu-usuario/azure-monitor-demo.git" -ForegroundColor Blue
+Write-Host "2. Connect local repository to GitHub:" -ForegroundColor Cyan
+Write-Host "   git remote add origin https://github.com/your-username/azure-monitor-demo.git" -ForegroundColor Blue
 Write-Host ""
-Write-Host "3. Configurar rama main como predeterminada:" -ForegroundColor Cyan
+Write-Host "3. Set main as the default branch:" -ForegroundColor Cyan
 Write-Host "   git branch -M main" -ForegroundColor Blue
 Write-Host ""
-Write-Host "4. Subir código a GitHub:" -ForegroundColor Cyan
+Write-Host "4. Push code to GitHub:" -ForegroundColor Cyan
 Write-Host "   git push -u origin main" -ForegroundColor Blue
 Write-Host ""
-Write-Host "5. (Opcional) Configurar GitHub Actions:" -ForegroundColor Cyan
-Write-Host "   - Ir a Settings > Secrets and variables > Actions" -ForegroundColor Blue
-Write-Host "   - Agregar AZURE_CREDENTIALS para validación automática" -ForegroundColor Blue
+Write-Host "5. (Optional) Configure GitHub Actions:" -ForegroundColor Cyan
+Write-Host "   - Go to Settings > Secrets and variables > Actions" -ForegroundColor Blue
+Write-Host "   - Add AZURE_CREDENTIALS for automated validation" -ForegroundColor Blue
 Write-Host ""
-Write-Host "🔗 El proyecto incluye:" -ForegroundColor Yellow
-Write-Host "   ✅ README.md completo con instrucciones" -ForegroundColor Green
-Write-Host "   ✅ Documentación organizada en /docs" -ForegroundColor Green
-Write-Host "   ✅ Scripts organizados en /scripts" -ForegroundColor Green
-Write-Host "   ✅ Código fuente limpio sin información sensible" -ForegroundColor Green
-Write-Host "   ✅ .gitignore configurado apropiadamente" -ForegroundColor Green
-Write-Host "   ✅ Licencia MIT incluida" -ForegroundColor Green
-Write-Host "   ✅ GitHub Actions para validación" -ForegroundColor Green
-Write-Host "   ✅ Guías de contribución" -ForegroundColor Green
+Write-Host "🔗 The project includes:" -ForegroundColor Yellow
+Write-Host "   ✅ Complete README.md with instructions" -ForegroundColor Green
+Write-Host "   ✅ Documentation organized in /docs" -ForegroundColor Green
+Write-Host "   ✅ Scripts organized in /scripts" -ForegroundColor Green
+Write-Host "   ✅ Clean source code without sensitive information" -ForegroundColor Green
+Write-Host "   ✅ Properly configured .gitignore" -ForegroundColor Green
+Write-Host "   ✅ MIT license included" -ForegroundColor Green
+Write-Host "   ✅ GitHub Actions for validation" -ForegroundColor Green
+Write-Host "   ✅ Contribution guides" -ForegroundColor Green
 Write-Host ""
-Write-Host "🎯 ¡Tu proyecto está listo para impresionar en GitHub!" -ForegroundColor Green
+Write-Host "🎯 Your project is ready to impress on GitHub!" -ForegroundColor Green

@@ -2,7 +2,7 @@
 description: >-
   Analyze the current Log Analytics ingestion costs, identify the highest-cost
   tables, and generate quick-action recommendations to reduce spend while
-  maintaining observability for Shift Technology.
+  maintaining observability for the customer.
 ---
 
 You are the `azure-monitor-architect` agent. Use the `log-analytics-cost` skill.

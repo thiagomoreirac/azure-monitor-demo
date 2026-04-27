@@ -1,15 +1,15 @@
-# 🔍 Validación Final del Proyecto para GitHub
-# Este script verifica que el proyecto esté listo para ser subido a GitHub
+# 🔍 Final Project Validation for GitHub
+# This script verifies that the project is ready to be pushed to GitHub
 
-Write-Host "🔍 VALIDACIÓN FINAL - Azure Monitor Demo" -ForegroundColor Cyan
+Write-Host "🔍 FINAL VALIDATION - Azure Monitor Demo" -ForegroundColor Cyan
 Write-Host "=======================================" -ForegroundColor Cyan
 Write-Host ""
 
-$errors = @()
+$validationIssues = @()
 $warnings = @()
 $passed = 0
 
-# Función helper para checks
+# Helper function for checks
 function Test-FileExists {
     param($Path, $Description)
     if (Test-Path $Path) {
@@ -18,7 +18,7 @@ function Test-FileExists {
         return $true
     } else {
         Write-Host "❌ $Description" -ForegroundColor Red
-        $script:errors += $Description
+        $script:validationIssues += $Description
         return $false
     }
 }
@@ -31,7 +31,7 @@ function Test-DirectoryExists {
         return $true
     } else {
         Write-Host "❌ $Description" -ForegroundColor Red
-        $script:errors += $Description
+        $script:validationIssues += $Description
         return $false
     }
 }
@@ -50,150 +50,149 @@ function Test-ContentDoesNotContain {
             return $true
         }
     } else {
-        Write-Host "❌ Archivo no encontrado: $Path" -ForegroundColor Red
-        $script:errors += "Archivo no encontrado: $Path"
+        Write-Host "❌ File not found: $Path" -ForegroundColor Red
+        $script:validationIssues += "File not found: $Path"
         return $false
     }
 }
 
-# 1. Verificar estructura de directorios
-Write-Host "📁 Verificando estructura de directorios..." -ForegroundColor Yellow
-Test-DirectoryExists "docs" "Directorio docs/"
-Test-DirectoryExists "scripts" "Directorio scripts/"
-Test-DirectoryExists "src" "Directorio src/"
-Test-DirectoryExists "infra" "Directorio infra/"
-Test-DirectoryExists ".github\workflows" "Directorio .github/workflows/"
-Test-DirectoryExists ".vscode" "Directorio .vscode/"
+# 1. Verify directory structure
+Write-Host "📁 Verifying directory structure..." -ForegroundColor Yellow
+Test-DirectoryExists "docs" "docs/ directory"
+Test-DirectoryExists "scripts" "scripts/ directory"
+Test-DirectoryExists "src" "src/ directory"
+Test-DirectoryExists "infra" "infra/ directory"
+Test-DirectoryExists ".github\workflows" ".github/workflows/ directory"
+Test-DirectoryExists ".vscode" ".vscode/ directory"
 
 Write-Host ""
 
-# 2. Verificar archivos esenciales
-Write-Host "📄 Verificando archivos esenciales..." -ForegroundColor Yellow
-Test-FileExists "README.md" "README.md principal"
-Test-FileExists "LICENSE" "Archivo de licencia"
-Test-FileExists ".gitignore" "Archivo .gitignore"
-Test-FileExists "CONTRIBUTING.md" "Guía de contribución"
-Test-FileExists ".env.example" "Archivo de ejemplo de variables de entorno"
-Test-FileExists "QUICKSTART.md" "Guía de inicio rápido"
+# 2. Verify essential files
+Write-Host "📄 Verifying essential files..." -ForegroundColor Yellow
+Test-FileExists "README.md" "Main README.md"
+Test-FileExists "LICENSE" "License file"
+Test-FileExists ".gitignore" ".gitignore file"
+Test-FileExists "CONTRIBUTING.md" "Contribution guide"
+Test-FileExists ".env.example" "Example environment variables file"
+Test-FileExists "QUICKSTART.md" "Quick start guide"
 
 Write-Host ""
 
-# 3. Verificar documentación
-Write-Host "📚 Verificando documentación..." -ForegroundColor Yellow
-Test-FileExists "docs\README.md" "README de documentación"
-Test-FileExists "docs\DEMO-GUIDE.md" "Guía de demostración"
-Test-FileExists "docs\DEPLOYMENT.md" "Guía de despliegue"
-Test-FileExists "docs\DEMO-READY-FINAL.md" "Resumen final"
+# 3. Verify documentation
+Write-Host "📚 Verifying documentation..." -ForegroundColor Yellow
+Test-FileExists "docs\README.md" "Documentation README"
+Test-FileExists "docs\DEMO-GUIDE.md" "Demo guide"
+Test-FileExists "docs\DEPLOYMENT.md" "Deployment guide"
+Test-FileExists "docs\DEMO-READY-FINAL.md" "Final summary"
 
 Write-Host ""
 
-# 4. Verificar scripts
-Write-Host "📜 Verificando scripts..." -ForegroundColor Yellow
-Test-FileExists "scripts\README.md" "README de scripts"
-Test-FileExists "scripts\deploy.ps1" "Script de despliegue"
-Test-FileExists "scripts\demo-final.ps1" "Script de demostración"
-Test-FileExists "scripts\generate-traffic.ps1" "Generador de tráfico"
+# 4. Verify scripts
+Write-Host "📜 Verifying scripts..." -ForegroundColor Yellow
+Test-FileExists "scripts\README.md" "Scripts README"
+Test-FileExists "scripts\deploy.ps1" "Deployment script"
+Test-FileExists "scripts\demo-final.ps1" "Demo script"
+Test-FileExists "scripts\generate-traffic.ps1" "Traffic generator"
 
 Write-Host ""
 
-# 5. Verificar código fuente
-Write-Host "💻 Verificando código fuente..." -ForegroundColor Yellow
-Test-FileExists "src\README.md" "README de código fuente"
-Test-FileExists "src\webapp-simple\server.js" "Aplicación Node.js principal"
-Test-FileExists "src\webapp-simple\package.json" "Package.json de Node.js"
-Test-FileExists "infra\main.json" "ARM Template principal"
-Test-FileExists "infra\main.parameters.json" "Parámetros ARM Template"
+# 5. Verify source code
+Write-Host "💻 Verifying source code..." -ForegroundColor Yellow
+Test-FileExists "src\README.md" "Source code README"
+Test-FileExists "src\webapp-simple\server.js" "Main Node.js application"
+Test-FileExists "src\webapp-simple\package.json" "Node.js package.json"
+Test-FileExists "infra\main.json" "Main ARM template"
+Test-FileExists "infra\main.parameters.json" "ARM template parameters"
 
 Write-Host ""
 
-# 6. Verificar que no hay información sensible
-Write-Host "🔒 Verificando ausencia de información sensible..." -ForegroundColor Yellow
-Test-ContentDoesNotContain "src\webapp-simple\server.js" "21c11c05-b593-4b4b-93d3-d2e9a5f6be25" "Sin keys reales en server.js"
-Test-ContentDoesNotContain "infra\main.parameters.json" "ComplexPassword123!" "Sin passwords reales en parámetros"
+# 6. Verify there is no sensitive information
+Write-Host "🔒 Verifying absence of sensitive information..." -ForegroundColor Yellow
+Test-ContentDoesNotContain "src\webapp-simple\server.js" "21c11c05-b593-4b4b-93d3-d2e9a5f6be25" "No real keys in server.js"
+Test-ContentDoesNotContain "infra\main.parameters.json" "ComplexPassword123!" "No real passwords in parameters"
 
-# Verificar que no existen archivos sensibles
+# Verify sensitive files do not exist
 if (Test-Path "DEMO-CREDENTIALS.md") {
-    Write-Host "⚠️  Archivo sensible encontrado: DEMO-CREDENTIALS.md" -ForegroundColor Yellow
-    $warnings += "Archivo sensible encontrado: DEMO-CREDENTIALS.md"
+    Write-Host "⚠️  Sensitive file found: DEMO-CREDENTIALS.md" -ForegroundColor Yellow
+    $warnings += "Sensitive file found: DEMO-CREDENTIALS.md"
 } else {
-    Write-Host "✅ Sin archivos de credenciales" -ForegroundColor Green
+    Write-Host "✅ No credential files found" -ForegroundColor Green
     $passed++
 }
 
 Write-Host ""
 
-# 7. Verificar configuración GitHub
-Write-Host "🐙 Verificando configuración GitHub..." -ForegroundColor Yellow
+# 7. Verify GitHub configuration
+Write-Host "🐙 Verifying GitHub configuration..." -ForegroundColor Yellow
 Test-FileExists ".github\workflows\validate.yml" "GitHub Actions workflow"
-Test-FileExists ".vscode\extensions.json" "Extensiones VS Code recomendadas"
-Test-FileExists "azure-monitor-demo.code-workspace" "Workspace de VS Code"
+Test-FileExists ".vscode\extensions.json" "Recommended VS Code extensions"
+Test-FileExists "azure-monitor-demo.code-workspace" "VS Code workspace"
 
 Write-Host ""
 
-# 8. Verificar archivos temporales/innecesarios
-Write-Host "🧹 Verificando limpieza..." -ForegroundColor Yellow
+# 8. Verify temporary/unnecessary files
+Write-Host "🧹 Verifying cleanup..." -ForegroundColor Yellow
 $tempFiles = @("*.zip", "logs-extracted", "temp-logs", "*.log", "Lab.sln")
 $foundTemp = $false
 
 foreach ($pattern in $tempFiles) {
     $files = Get-ChildItem -Path $pattern -ErrorAction SilentlyContinue
     if ($files) {
-        Write-Host "⚠️  Archivos temporales encontrados: $pattern" -ForegroundColor Yellow
-        $warnings += "Archivos temporales encontrados: $pattern"
+        Write-Host "⚠️  Temporary files found: $pattern" -ForegroundColor Yellow
+        $warnings += "Temporary files found: $pattern"
         $foundTemp = $true
     }
 }
 
 if (-not $foundTemp) {
-    Write-Host "✅ Sin archivos temporales" -ForegroundColor Green
+    Write-Host "✅ No temporary files found" -ForegroundColor Green
     $passed++
 }
 
 Write-Host ""
 
-# 9. Verificar tamaño del proyecto
-Write-Host "📊 Verificando tamaño del proyecto..." -ForegroundColor Yellow
+# 9. Verify project size
+Write-Host "📊 Verifying project size..." -ForegroundColor Yellow
 $totalSize = (Get-ChildItem -Recurse -File | Measure-Object -Property Length -Sum).Sum
 $totalSizeMB = [math]::Round($totalSize / 1MB, 2)
 
 if ($totalSizeMB -lt 50) {
-    Write-Host "✅ Tamaño del proyecto: $totalSizeMB MB (apropiado para GitHub)" -ForegroundColor Green
+    Write-Host "✅ Project size: $totalSizeMB MB (appropriate for GitHub)" -ForegroundColor Green
     $passed++
 } else {
-    Write-Host "⚠️  Tamaño del proyecto: $totalSizeMB MB (considerar optimizar)" -ForegroundColor Yellow
-    $warnings += "Proyecto grande: $totalSizeMB MB"
+    Write-Host "⚠️  Project size: $totalSizeMB MB (consider optimization)" -ForegroundColor Yellow
+    $warnings += "Large project size: $totalSizeMB MB"
 }
 
 Write-Host ""
 
-# 10. Resumen final
-Write-Host "📋 RESUMEN DE VALIDACIÓN" -ForegroundColor Cyan
+Write-Host "📋 VALIDATION SUMMARY" -ForegroundColor Cyan
 Write-Host "========================" -ForegroundColor Cyan
-Write-Host "✅ Checks pasados: $passed" -ForegroundColor Green
+Write-Host "✅ Checks passed: $passed" -ForegroundColor Green
 
 if ($warnings.Count -gt 0) {
-    Write-Host "⚠️  Advertencias: $($warnings.Count)" -ForegroundColor Yellow
+    Write-Host "⚠️  Warnings: $($warnings.Count)" -ForegroundColor Yellow
     foreach ($warning in $warnings) {
         Write-Host "   - $warning" -ForegroundColor Yellow
     }
 }
 
-if ($errors.Count -gt 0) {
-    Write-Host "❌ Errores: $($errors.Count)" -ForegroundColor Red
-    foreach ($error in $errors) {
-        Write-Host "   - $error" -ForegroundColor Red
+if ($validationIssues.Count -gt 0) {
+    Write-Host "❌ Errors: $($validationIssues.Count)" -ForegroundColor Red
+    $validationIssues | ForEach-Object {
+        Write-Host "   - $_" -ForegroundColor Red
     }
     Write-Host ""
-    Write-Host "🚨 ACCIÓN REQUERIDA: Corregir errores antes de subir a GitHub" -ForegroundColor Red
+    Write-Host "🚨 ACTION REQUIRED: Fix errors before pushing to GitHub" -ForegroundColor Red
     exit 1
 } else {
     Write-Host ""
-    Write-Host "🎉 PROYECTO LISTO PARA GITHUB!" -ForegroundColor Green
+    Write-Host "🎉 PROJECT READY FOR GITHUB!" -ForegroundColor Green
     Write-Host ""
-    Write-Host "📋 Próximos pasos recomendados:" -ForegroundColor White
-    Write-Host "1. Ejecutar: .\init-github.ps1" -ForegroundColor Cyan
-    Write-Host "2. Crear repositorio en GitHub" -ForegroundColor Cyan
-    Write-Host "3. Conectar y subir código" -ForegroundColor Cyan
+    Write-Host "📋 Recommended next steps:" -ForegroundColor White
+    Write-Host "1. Run: .\init-github.ps1" -ForegroundColor Cyan
+    Write-Host "2. Create repository on GitHub" -ForegroundColor Cyan
+    Write-Host "3. Connect and push code" -ForegroundColor Cyan
     Write-Host ""
-    Write-Host "🌟 Tu proyecto Azure Monitor Demo está perfectamente preparado!" -ForegroundColor Green
+    Write-Host "🌟 Your Azure Monitor Demo project is perfectly prepared!" -ForegroundColor Green
 }

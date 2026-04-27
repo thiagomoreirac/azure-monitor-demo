@@ -332,7 +332,7 @@ app.get('/dependencies', (req, res) => {
 // Insurance-specific endpoints
 
 // Submit a new claim
-app.post('/api/submit-claim', (req, res) => {
+function submitClaim(req, res) {
     const startTime = Date.now();
     const claimId = claims.length + 1;
     const policyNumber = `POL-2024-${String(claimId).padStart(3, '0')}`;
@@ -382,7 +382,10 @@ app.post('/api/submit-claim', (req, res) => {
             timestamp: new Date().toISOString()
         });
     }, 100 + Math.random() * 200);
-});
+}
+
+app.post('/api/submit-claim', submitClaim);
+app.get('/api/submit-claim', submitClaim);
 
 // Fraud detection check
 app.get('/fraud-check', (req, res) => {
@@ -443,6 +446,102 @@ app.get('/fraud-check', (req, res) => {
             timestamp: new Date().toISOString()
         });
     }, 50 + Math.random() * 150);
+});
+
+// Non-OTel external service ingestion endpoint
+app.post('/api/external-ingest', (req, res) => {
+    const now = new Date().toISOString();
+    const serviceName = req.body.serviceName || 'external-fraud-api';
+    const eventType = req.body.eventType || 'ExternalServiceEvent';
+    const tenant = req.body.tenant || 'customerA';
+    const region = req.body.region || 'francecentral';
+    const latencyMs = Number(req.body.latencyMs || (Math.random() * 900 + 100).toFixed(2));
+    const status = (req.body.status || 'success').toLowerCase();
+    const severity = Number(req.body.severity || (status === 'success' ? 1 : 3));
+    const traceId = req.body.traceId || `${Date.now()}-${Math.floor(Math.random() * 100000)}`;
+
+    client.trackEvent({
+        name: 'External_Service_Ingested',
+        properties: {
+            tenant,
+            region,
+            sourceType: 'non-otel',
+            serviceName,
+            eventType,
+            status,
+            traceId,
+            timestamp: now
+        }
+    });
+
+    client.trackTrace({
+        message: `[ExternalService] ${serviceName} ${eventType} ${status}`,
+        severity,
+        properties: {
+            tenant,
+            region,
+            sourceType: 'non-otel',
+            serviceName,
+            eventType,
+            status,
+            traceId,
+            latencyMs: latencyMs.toString()
+        }
+    });
+
+    client.trackMetric({
+        name: 'External_Service_Latency',
+        value: latencyMs,
+        properties: {
+            tenant,
+            region,
+            sourceType: 'non-otel',
+            serviceName,
+            eventType,
+            status,
+            traceId
+        }
+    });
+
+    client.trackDependency({
+        target: serviceName,
+        name: eventType,
+        data: 'non-otel ingestion',
+        duration: latencyMs,
+        resultCode: status === 'success' ? 200 : 500,
+        success: status === 'success',
+        properties: {
+            tenant,
+            region,
+            sourceType: 'non-otel',
+            traceId
+        }
+    });
+
+    if (status !== 'success') {
+        const err = new Error(`${serviceName} reported ${eventType} failure`);
+        client.trackException({
+            exception: err,
+            properties: {
+                tenant,
+                region,
+                sourceType: 'non-otel',
+                serviceName,
+                eventType,
+                traceId
+            }
+        });
+    }
+
+    res.status(202).json({
+        accepted: true,
+        sourceType: 'non-otel',
+        serviceName,
+        eventType,
+        status,
+        traceId,
+        timestamp: now
+    });
 });
 
 // Error handling middleware

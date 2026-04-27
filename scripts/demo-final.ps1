@@ -5,8 +5,23 @@ Write-Host "🚀 DEMO: Azure Monitor & Application Insights" -ForegroundColor Cy
 Write-Host "================================================" -ForegroundColor Cyan
 Write-Host ""
 
-$baseUrl = "https://app-bwkinh757hlog.azurewebsites.net"
-$resourceGroup = "demo-monitor-rg"
+# Dynamically resolve the App Service URL from the resource group
+$resourceGroup = "customera-monitor-demo"
+
+Write-Host "🔍 Resolving App Service URL from resource group '$resourceGroup'..." -ForegroundColor Cyan
+try {
+    $appName = az webapp list --resource-group $resourceGroup --query "[0].defaultHostName" -o tsv 2>$null
+    if (-not $appName) {
+        Write-Host "   ❌ No App Service found in resource group '$resourceGroup'" -ForegroundColor Red
+        exit 1
+    }
+    $baseUrl = "https://$appName"
+    Write-Host "   ✅ Resolved: $baseUrl" -ForegroundColor Green
+} catch {
+    Write-Host "   ❌ Failed to resolve App Service: $($_.Exception.Message)" -ForegroundColor Red
+    exit 1
+}
+Write-Host ""
 
 # 1. Check application status
 Write-Host "1. 📊 Checking application status..." -ForegroundColor Yellow
@@ -22,12 +37,12 @@ try {
 
 Write-Host ""
 
-# 2. Test products API
-Write-Host "2. 🛍️  Testing products API..." -ForegroundColor Yellow
+# 2. Test claims API
+Write-Host "2. 📋 Testing claims API..." -ForegroundColor Yellow
 try {
-    $products = Invoke-RestMethod -Uri "$baseUrl/api/products" -Method Get -TimeoutSec 10
-    Write-Host "   ✅ API working: $($products.count) products available" -ForegroundColor Green
-    Write-Host "   📦 Products: $($products.data | ForEach-Object { $_.name } | Join-String -Separator ', ')" -ForegroundColor Green
+    $claims = Invoke-RestMethod -Uri "$baseUrl/api/claims" -Method Get -TimeoutSec 10
+    Write-Host "   ✅ API working: $($claims.count) claims available" -ForegroundColor Green
+    Write-Host "   📋 Claims: $($claims.data | ForEach-Object { $_.id } | Join-String -Separator ', ')" -ForegroundColor Green
 } catch {
     Write-Host "   ❌ API error: $($_.Exception.Message)" -ForegroundColor Red
 }
@@ -113,9 +128,13 @@ Write-Host ""
 # 8. Environment information
 Write-Host "8. 📋 Monitoring environment information:" -ForegroundColor Yellow
 Write-Host "   🌐 Application URL: $baseUrl" -ForegroundColor Cyan
-Write-Host "   📊 Application Insights: insights-bwkinh757hlog" -ForegroundColor Cyan
+$insightsName = az resource list --resource-group $resourceGroup --resource-type "Microsoft.Insights/components" --query "[0].name" -o tsv 2>$null
+if (-not $insightsName) { $insightsName = "N/A" }
+Write-Host "   📊 Application Insights: $insightsName" -ForegroundColor Cyan
 Write-Host "   📁 Resource Group: $resourceGroup" -ForegroundColor Cyan
-Write-Host "   📍 Region: North Europe" -ForegroundColor Cyan
+$rgLocation = az group show --name $resourceGroup --query "location" -o tsv 2>$null
+if (-not $rgLocation) { $rgLocation = "N/A" }
+Write-Host "   📍 Region: $rgLocation" -ForegroundColor Cyan
 
 Write-Host ""
 
@@ -123,7 +142,7 @@ Write-Host ""
 Write-Host "9. 🔗 Useful links for demo:" -ForegroundColor Yellow
 Write-Host "   🌐 Web Application: $baseUrl" -ForegroundColor Cyan
 Write-Host "   📊 Health Check: $baseUrl/health" -ForegroundColor Cyan
-Write-Host "   🛍️  Products API: $baseUrl/api/products" -ForegroundColor Cyan
+Write-Host "   � Claims API: $baseUrl/api/claims" -ForegroundColor Cyan
 Write-Host "   🔥 Generate Error: $baseUrl/error" -ForegroundColor Cyan
 Write-Host "   ⚡ Load Test: $baseUrl/load?iterations=5000" -ForegroundColor Cyan
 Write-Host "   💾 Memory Test: $baseUrl/memory?size=1000000" -ForegroundColor Cyan
@@ -134,7 +153,7 @@ Write-Host "✅ DEMO COMPLETED SUCCESSFULLY" -ForegroundColor Green
 Write-Host "================================================" -ForegroundColor Green
 Write-Host ""
 Write-Host "📌 Next steps for presentation:" -ForegroundColor White
-Write-Host "   1. Open Azure Portal -> Application Insights 'insights-bwkinh757hlog'" -ForegroundColor White
+Write-Host "   1. Open Azure Portal -> Application Insights '$insightsName'" -ForegroundColor White
 Write-Host "   2. Review real-time metrics (Live Metrics)" -ForegroundColor White
 Write-Host "   3. Check captured errors (Failures)" -ForegroundColor White
 Write-Host "   4. Review performance (Performance)" -ForegroundColor White

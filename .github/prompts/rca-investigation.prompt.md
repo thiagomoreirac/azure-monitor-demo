@@ -1,6 +1,6 @@
 ---
 description: >-
-  Perform a guided Root Cause Analysis (RCA) for an incident in the Shift
+  Perform a guided Root Cause Analysis (RCA) for an incident in the customer's
   Technology observability platform. Works through a structured drill-down
   from alert → service → operation → dependency → code.
 ---

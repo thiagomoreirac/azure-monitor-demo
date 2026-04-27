@@ -66,59 +66,59 @@ Edit `infra/main.parameters.json` to customize:
 }
 ```
 
-### 3. Ejecución del Despliegue
+### 3. Run the Deployment
 
-#### Opción A: Script Automatizado (Recomendado)
+#### Option A: Automated Script (Recommended)
 ```powershell
-# Despliegue con valores por defecto
+# Deployment with default values
 .\deploy.ps1
 
-# Despliegue con parámetros personalizados
-.\deploy.ps1 -ResourceGroupName "mi-demo-rg" -Location "West Europe"
+# Deployment with custom parameters
+.\deploy.ps1 -ResourceGroupName "my-demo-rg" -Location "West Europe"
 ```
 
-#### Opción B: Comandos Manuales
+#### Option B: Manual Commands
 ```powershell
-# Definir variables
+# Define variables
 $resourceGroup = "demo-monitor-rg"
 $location = "North Europe"
 
-# Crear resource group
+# Create resource group
 az group create --name $resourceGroup --location $location
 
-# Desplegar ARM template
+# Deploy ARM template
 az deployment group create `
     --resource-group $resourceGroup `
     --template-file "infra/main.json" `
     --parameters "infra/main.parameters.json"
 ```
 
-### 4. Post-Despliegue
+### 4. Post-Deployment
 
-#### Configurar la Aplicación
+#### Configure the Application
 ```powershell
-# Obtener información de deployment
+# Get deployment information
 $appName = az deployment group show --resource-group $resourceGroup --name "main" --query "properties.outputs.appServiceName.value" --output tsv
 
-# Configurar App Service para Node.js
+# Configure App Service for Node.js
 az webapp config appsettings set --name $appName --resource-group $resourceGroup --settings WEBSITE_NODE_DEFAULT_VERSION=18.12.0
 
-# Desplegar aplicación
+# Deploy application
 az webapp deployment source config-zip --name $appName --resource-group $resourceGroup --src "webapp-simple-deploy.zip"
 ```
 
-#### Verificar Deployment
+#### Verify Deployment
 ```powershell
-# Ejecutar script de verificación
+# Run verification script
 .\demo-final.ps1
 ```
 
-## 🔧 Configuraciones Avanzadas
+## 🔧 Advanced Configurations
 
-### Personalización de Alertas
+### Alert Customization
 
-#### Modificar Umbrales en ARM Template
-En `infra/main.json`, buscar las secciones de alertas:
+#### Modify Thresholds in ARM Template
+In `infra/main.json`, locate the alert sections:
 
 ```json
 {
@@ -126,7 +126,7 @@ En `infra/main.json`, buscar las secciones de alertas:
     "properties": {
         "criteria": {
             "allOf": [{
-                "threshold": 2000,  // Cambiar umbral aquí
+                "threshold": 2000,  // Change threshold here
                 "timeAggregation": "Average"
             }]
         }
@@ -134,66 +134,66 @@ En `infra/main.json`, buscar las secciones de alertas:
 }
 ```
 
-### Configuración de Application Insights
+### Application Insights Configuration
 
-#### Variables de Entorno Personalizadas
+#### Custom Environment Variables
 ```powershell
-# Configurar sampling rate
+# Configure sampling rate
 az webapp config appsettings set --name $appName --resource-group $resourceGroup --settings APPINSIGHTS_SAMPLING_PERCENTAGE=50
 
-# Configurar log level
+# Configure log level
 az webapp config appsettings set --name $appName --resource-group $resourceGroup --settings APPINSIGHTS_LOG_LEVEL=Information
 ```
 
-### Configuración de Escalabilidad
+### Scalability Configuration
 
 #### Auto-scaling Rules
 ```powershell
-# Configurar auto-scaling basado en CPU
+# Configure CPU-based auto-scaling
 az monitor autoscale create --resource-group $resourceGroup --resource $appName --resource-type Microsoft.Web/serverfarms --name autoscale-$appName --min-count 1 --max-count 3 --count 1
 
-# Agregar regla de scale-out
+# Add scale-out rule
 az monitor autoscale rule create --resource-group $resourceGroup --autoscale-name autoscale-$appName --condition "Percentage CPU > 70 avg 5m" --scale out 1
 ```
 
-## 📊 Validación del Despliegue
+## 📊 Deployment Validation
 
-### Checklist de Verificación
+### Verification Checklist
 
-#### ✅ Recursos Desplegados
-- [ ] Resource Group creado
-- [ ] App Service funcionando
-- [ ] Application Insights configurado
+#### ✅ Deployed Resources
+- [ ] Resource Group created
+- [ ] App Service running
+- [ ] Application Insights configured
 - [ ] SQL Database online
-- [ ] Log Analytics Workspace activo
-- [ ] Storage Account disponible
-- [ ] Azure Functions desplegado
-- [ ] Alertas configuradas
+- [ ] Log Analytics Workspace active
+- [ ] Storage Account available
+- [ ] Azure Functions deployed
+- [ ] Alerts configured
 
-#### ✅ Aplicación Funcionando
+#### ✅ Application Running
 ```powershell
-# Verificar endpoints principales
+# Verify main endpoints
 $baseUrl = "https://$appName.azurewebsites.net"
 
 # Health check
 Invoke-RestMethod -Uri "$baseUrl/health"
 
-# API de productos
+# Products API
 Invoke-RestMethod -Uri "$baseUrl/api/products"
 
-# Generar error (debe retornar 500)
-try { Invoke-RestMethod -Uri "$baseUrl/error" } catch { "Error generado correctamente" }
+# Generate error (should return 500)
+try { Invoke-RestMethod -Uri "$baseUrl/error" } catch { "Error generated successfully" }
 ```
 
-#### ✅ Telemetría Funcionando
-1. Abrir Azure Portal → Application Insights
-2. Verificar Live Metrics Stream
-3. Generar tráfico y verificar métricas
-4. Comprobar que aparecen logs
+#### ✅ Telemetry Working
+1. Open Azure Portal → Application Insights
+2. Verify Live Metrics Stream
+3. Generate traffic and verify metrics
+4. Confirm logs are appearing
 
-### Scripts de Validación
+### Validation Scripts
 
-#### Script de Health Check Completo
+#### Full Health Check Script
 ```powershell
 # Archivo: validate-deployment.ps1
 param(
@@ -201,140 +201,140 @@ param(
     [string]$AppName
 )
 
-Write-Host "🔍 Validando deployment..." -ForegroundColor Yellow
+Write-Host "🔍 Validating deployment..." -ForegroundColor Yellow
 
-# Verificar recursos
+# Verify resources
 $resources = az resource list --resource-group $ResourceGroupName --query "[].{name:name, type:type, provisioningState:properties.provisioningState}" --output table
-Write-Host "✅ Recursos desplegados:" -ForegroundColor Green
+Write-Host "✅ Deployed resources:" -ForegroundColor Green
 $resources
 
-# Verificar aplicación
+# Verify application
 if ($AppName) {
     $appUrl = "https://$AppName.azurewebsites.net"
     try {
         $health = Invoke-RestMethod -Uri "$appUrl/health" -TimeoutSec 10
-        Write-Host "✅ Aplicación funcionando: $($health.status)" -ForegroundColor Green
+        Write-Host "✅ Application running: $($health.status)" -ForegroundColor Green
     } catch {
-        Write-Host "❌ Error en aplicación: $($_.Exception.Message)" -ForegroundColor Red
+        Write-Host "❌ Application error: $($_.Exception.Message)" -ForegroundColor Red
     }
 }
 
-Write-Host "🎯 Validación completada" -ForegroundColor Green
+Write-Host "🎯 Validation completed" -ForegroundColor Green
 ```
 
-## 🚨 Solución de Problemas
+## 🚨 Troubleshooting
 
-### Errores Comunes
+### Common Errors
 
-#### Error: Resource Group ya existe
+#### Error: Resource Group already exists
 ```powershell
-# Verificar recursos existentes
+# Check existing resources
 az resource list --resource-group $resourceGroup --output table
 
-# Eliminar si es necesario
+# Delete if needed
 az group delete --name $resourceGroup --yes --no-wait
 ```
 
 #### Error: Deployment timeout
 ```powershell
-# Verificar estado del deployment
+# Check deployment status
 az deployment group show --resource-group $resourceGroup --name "main" --query "properties.provisioningState"
 
-# Revisar errores específicos
+# Review specific errors
 az deployment group show --resource-group $resourceGroup --name "main" --query "properties.error"
 ```
 
-#### Error: App Service no responde
+#### Error: App Service is not responding
 ```powershell
-# Verificar logs
+# Check logs
 az webapp log tail --name $appName --resource-group $resourceGroup
 
-# Reiniciar si es necesario
+# Restart if needed
 az webapp restart --name $appName --resource-group $resourceGroup
 ```
 
-#### Error: Sin datos en Application Insights
+#### Error: No data in Application Insights
 ```powershell
-# Verificar connection string
+# Verify connection string
 az webapp config appsettings list --name $appName --resource-group $resourceGroup --query "[?name=='APPLICATIONINSIGHTS_CONNECTION_STRING']"
 
-# Generar tráfico de prueba
+# Generate test traffic
 for ($i=1; $i -le 10; $i++) {
     Invoke-RestMethod -Uri "https://$appName.azurewebsites.net/health" | Out-Null
     Start-Sleep 1
 }
 ```
 
-### Logs y Diagnósticos
+### Logs and Diagnostics
 
-#### Habilitar Logging Detallado
+#### Enable Detailed Logging
 ```powershell
-# Habilitar application logging
+# Enable application logging
 az webapp log config --name $appName --resource-group $resourceGroup --application-logging filesystem
 
-# Habilitar web server logging
+# Enable web server logging
 az webapp log config --name $appName --resource-group $resourceGroup --web-server-logging filesystem
 
-# Ver logs en tiempo real
+# View logs in real time
 az webapp log tail --name $appName --resource-group $resourceGroup
 ```
 
-#### Descargar Logs
+#### Download Logs
 ```powershell
-# Descargar logs de deployment
+# Download deployment logs
 az webapp deployment source show --name $appName --resource-group $resourceGroup
 
-# Descargar logs de aplicación
+# Download application logs
 az webapp log download --name $appName --resource-group $resourceGroup --log-file app-logs.zip
 ```
 
-## 🧹 Limpieza de Recursos
+## 🧹 Resource Cleanup
 
-### Eliminar Entorno Completo
+### Delete Full Environment
 ```powershell
-# Eliminar resource group y todos los recursos
+# Delete resource group and all resources
 az group delete --name $resourceGroup --yes --no-wait
 
-# Verificar eliminación
+# Verify deletion
 az group exists --name $resourceGroup
 ```
 
-### Eliminar Recursos Específicos
+### Delete Specific Resources
 ```powershell
-# Eliminar solo la aplicación
+# Delete only the application
 az webapp delete --name $appName --resource-group $resourceGroup
 
-# Eliminar solo Application Insights
+# Delete only Application Insights
 az monitor app-insights component delete --app $appInsightsName --resource-group $resourceGroup
 ```
 
-## 📈 Optimizaciones
+## 📈 Optimizations
 
 ### Performance
-- Configurar CDN para contenido estático
-- Implementar caching strategies
+- Configure CDN for static content
+- Implement caching strategies
 - Optimizar queries de Application Insights
 
-### Costos
-- Usar tiers básicos para demos
-- Configurar retention policies apropiadas
-- Implementar auto-shutdown para entornos temporales
+### Costs
+- Use basic tiers for demos
+- Configure appropriate retention policies
+- Implement auto-shutdown for temporary environments
 
-### Seguridad
+### Security
 - Configurar managed identities
-- Implementar network security groups
-- Configurar private endpoints para producción
+- Implement network security groups
+- Configure private endpoints for production
 
 ---
 
-## 📞 Soporte
+## 📞 Support
 
-Para problemas durante el despliegue:
-1. Verificar prerrequisitos
-2. Revisar logs de Azure CLI
-3. Consultar documentación de Azure
-4. Crear issue en el repositorio del proyecto
+For deployment issues:
+1. Verify prerequisites
+2. Review Azure CLI logs
+3. Check Azure documentation
+4. Create an issue in the project repository
 
 ---
 
-**¡El entorno estará listo para la demostración en 10-15 minutos!** 🚀
+**The environment will be ready for the demo in 10-15 minutes!** 🚀

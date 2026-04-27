@@ -1,26 +1,26 @@
-# 📚 Documentación
+# 📚 Documentation
 
-Este directorio contiene toda la documentación del proyecto Azure Monitor Demo.
+This directory contains all documentation for the Azure Monitor Demo project.
 
-## Documentos Disponibles
+## Available Documents
 
-### 🎯 Guías Principales
-- **`DEMO-GUIDE.md`** - Guía completa para presentaciones
-- **`DEPLOYMENT.md`** - Instrucciones detalladas de despliegue
+### 🎯 Main Guides
+- **`DEMO-GUIDE.md`** - Complete guide for presentations
+- **`DEPLOYMENT.md`** - Detailed deployment instructions
 
-### 📊 Referencias
-- **`DEMO-READY-FINAL.md`** - Estado final del proyecto y resumen
-- **`FINAL-SUMMARY.md`** - Resumen técnico completo
+### 📊 References
+- **`DEMO-READY-FINAL.md`** - Final project status and summary
+- **`FINAL-SUMMARY.md`** - Complete technical summary
 
-## Orden de Lectura Recomendado
+## Recommended Reading Order
 
-1. **DEPLOYMENT.md** - Para entender cómo desplegar
-2. **DEMO-GUIDE.md** - Para preparar presentaciones
-3. **DEMO-READY-FINAL.md** - Para verificar el estado final
+1. **DEPLOYMENT.md** - To understand how to deploy
+2. **DEMO-GUIDE.md** - To prepare presentations
+3. **DEMO-READY-FINAL.md** - To verify final status
 
-## Contribuciones
+## Contributions
 
-Al actualizar documentación:
-- Mantener formato Markdown consistente
-- Incluir ejemplos prácticos
-- Actualizar TOCs cuando sea necesario
+When updating documentation:
+- Keep Markdown formatting consistent
+- Include practical examples
+- Update TOCs when needed

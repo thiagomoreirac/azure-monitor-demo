@@ -4,7 +4,7 @@ description: >-
   Configure OpenTelemetry (OTel) and non-OTel ingestion pipelines into Azure
   Monitor / Log Analytics. Use when wiring up an OTel Collector, a
   Data Collection Rule (DCR), or a non-OTel source (Syslog, custom JSON,
-  external SaaS APIs) to funnel data into the Shift Technology observability
+  external SaaS APIs) to funnel data into the customer observability
   platform.
 ---
 
@@ -27,7 +27,7 @@ Log Analytics workspace.
 | External SaaS / third-party API | Logic App or Function → Logs Ingestion API |
 | Syslog / CEF | AMA Syslog DCR |
 
-### 2 — OTel Collector path (preferred for Shift Technology microservices)
+### 2 — OTel Collector path (preferred for customer microservices)
 
 **a. Add the OpenTelemetry SDK to the Node.js app**
 
@@ -106,13 +106,13 @@ service:
 {
   "type": "Microsoft.Insights/dataCollectionRules",
   "apiVersion": "2022-06-01",
-  "name": "[concat('dcr-shift-', variables('resourceToken'))]",
+  "name": "[concat('dcr-customer-', variables('resourceToken'))]",
   "location": "[parameters('location')]",
   "tags": "[variables('tags')]",
   "properties": {
     "dataFlows": [
       {
-        "streams": ["Custom-ShiftClaimsLogs_CL"],
+        "streams": ["Custom-CustomerClaimsLogs_CL"],
         "destinations": ["logAnalyticsWorkspace"],
         "transformKql": "source | extend tenant = tostring(customDimensions['tenant'])"
       }
@@ -140,7 +140,7 @@ $body = @{
 } | ConvertTo-Json
 
 az rest --method POST `
-  --url "https://<DCE_ENDPOINT>/dataCollectionRules/<DCR_ID>/streams/Custom-ShiftClaimsLogs_CL?api-version=2023-01-01" `
+  --url "https://<DCE_ENDPOINT>/dataCollectionRules/<DCR_ID>/streams/Custom-CustomerClaimsLogs_CL?api-version=2023-01-01" `
   --body $body `
   --headers "Content-Type=application/json"
 ```
@@ -155,7 +155,7 @@ traces
 | order by count_ desc
 
 // Confirm custom DCR table is receiving data
-ShiftClaimsLogs_CL
+CustomerClaimsLogs_CL
 | where TimeGenerated > ago(15m)
 | take 10
 

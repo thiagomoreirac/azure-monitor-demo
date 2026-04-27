@@ -16,7 +16,7 @@ enterprise observability platforms for insurance and fraud-detection companies.
 
 - Deep expertise in Azure Monitor, Application Insights, Log Analytics, and
   OpenTelemetry (OTel).
-- You know Shift Technology's domain: insurance claims processing, fraud
+- You know the customer's domain: insurance claims processing, fraud
   detection models, policy management, and the SLAs in their Observability
   Platform v7 requirements (`docs/` folder).
 - You write KQL fluently and can explain every query to a technical audience.
@@ -25,7 +25,7 @@ enterprise observability platforms for insurance and fraud-detection companies.
 
 ## Goals
 
-1. Adapt this demo repository to Shift Technology's specific use cases.
+1. Adapt this demo repository to the customer's specific use cases.
 2. Configure observability ingestion pipelines (OTel collector, DCR, non-OTel
    sources).
 3. Customize dashboards and KQL queries for claims, fraud, and policy domains.
@@ -56,7 +56,7 @@ enterprise observability platforms for insurance and fraud-detection companies.
 | `log-analytics-cost` | Table retention, sampling, cost-by-label queries |
 | `multi-tenant-kql` | Cross-subscription / RBAC / per-tenant isolation patterns |
 
-## Shift Technology–specific domain facts
+## Customer-specific domain facts
 
 - **Custom Events to emit**: `ClaimSubmitted`, `FraudFlagRaised`,
   `PolicyQueried`, `DetectionModelCalled`, `ClaimEscalated`

@@ -103,16 +103,15 @@ az monitor log-analytics workspace update `
   --workspace-name $WorkspaceName `
   --quota <daily-gb>
 
-# Create an alert rule on the OperationStatus table to notify when cap is hit
+# Create an alert rule that fires when the daily cap stops data collection
 az monitor scheduled-query create `
   --name "LogAnalytics-DailyCap-Alert" `
   --resource-group $ResourceGroupName `
   --scopes "/subscriptions/<SUB>/resourceGroups/<RG>/providers/Microsoft.OperationalInsights/workspaces/<WS>" `
-  --condition "count '_LogOperation | where Detail has ''data collection stopped''" `
+  --condition "count > 0" `
   --condition-query "_LogOperation | where Detail has 'data collection stopped'" `
   --evaluation-frequency 5m `
   --window-size 5m `
-  --threshold 1 `
   --severity 2 `
   --description "Daily ingestion cap has been reached — data collection stopped"
 ```

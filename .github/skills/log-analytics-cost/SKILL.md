@@ -31,7 +31,7 @@ Usage
 | where TimeGenerated > ago(7d) and IsBillable == true
 | summarize TotalGB = sum(Quantity) / 1024 by DataType
 | top 10 by TotalGB
-| extend EstimatedCostUSD = TotalGB * 2.76   // $2.76/GB is the default Pay-As-You-Go rate
+| extend EstimatedCostUSD = TotalGB * 2.76   // $2.76/GB is the Pay-As-You-Go rate as of 2024; verify current pricing at https://azure.microsoft.com/en-us/pricing/details/monitor/
 | render barchart
 ```
 
@@ -100,7 +100,7 @@ source
 For traces, filter below WARN in production:
 ```kql
 source
-| where severityLevel >= 2   // 0=Verbose,1=Info,2=Warning,3=Error,4=Critical
+| where severityLevel >= 2   // 0=Verbose, 1=Information, 2=Warning, 3=Error, 4=Critical
 ```
 
 ### 5 — Cost optimization dashboard tiles

@@ -3,15 +3,16 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "environmentName": {
-      "value": "demo-monitor"
-    },    "location": {
-      "value": "North Europe"
+      "value": "customera-monitor"
+    },
+    "location": {
+      "value": "France Central"
     },
     "administratorLogin": {
-      "value": "demoAdmin"
+      "value": "customeraAdmin"
     },
     "administratorPassword": {
-      "value": "Demo123456!"
+      "value": "CustomerA123456!"
     }
   }
 }

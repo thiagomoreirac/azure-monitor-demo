@@ -2,8 +2,8 @@
 param(
     [Parameter(Mandatory=$true)]
     [string]$ResourceGroupName,
-      [Parameter(Mandatory=$true)]
-    [string]$Location = "North Europe",
+    [Parameter(Mandatory=$true)]
+    [string]$Location = "France Central",
     
     [Parameter(Mandatory=$false)]
     [string]$SubscriptionId

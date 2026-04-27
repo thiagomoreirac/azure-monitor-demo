@@ -1,0 +1,68 @@
+name: "Copilot Setup Steps"
+
+# Run automatically when this file changes, and allow manual testing from the Actions tab.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+
+jobs:
+  # This job MUST be named `copilot-setup-steps` to be picked up by Copilot cloud agent.
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # ── Node.js (webapp-simple is Node/Express) ──────────────────────────
+      - name: Set up Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install Node.js dependencies
+        working-directory: src/webapp-simple
+        run: npm ci
+
+      # ── Azure CLI ────────────────────────────────────────────────────────
+      - name: Install / upgrade Azure CLI
+        run: |
+          # Install via the official Microsoft package repository (pinned to a specific release)
+          # See: https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux
+          sudo apt-get update -y
+          sudo apt-get install -y ca-certificates curl apt-transport-https lsb-release gnupg
+          sudo mkdir -p /etc/apt/keyrings
+          curl -sLS https://packages.microsoft.com/keys/microsoft.asc \
+            | gpg --dearmor \
+            | sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+          AZ_DIST=$(lsb_release -cs)
+          echo "Types: deb
+URIs: https://packages.microsoft.com/repos/azure-cli/
+Suites: ${AZ_DIST}
+Components: main
+Architectures: $(dpkg --print-architecture)
+Signed-by: /etc/apt/keyrings/microsoft.gpg" | sudo tee /etc/apt/sources.list.d/azure-cli.sources
+          sudo apt-get update -y
+          sudo apt-get install -y azure-cli
+          az version
+
+      # ── PowerShell ───────────────────────────────────────────────────────
+      - name: Install PowerShell
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y powershell
+          pwsh --version
+
+      # ── jq (used in validation scripts) ─────────────────────────────────
+      - name: Install jq
+        run: |
+          sudo apt-get install -y jq
+          jq --version
